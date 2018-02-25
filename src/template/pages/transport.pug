@@ -1,0 +1,15 @@
+extends ../extend/default
+block variables
+    - var title = 'Transport page';
+
+block main
+    main.content(data-page='sub')
+        +loader
+        +incoming-section('wide-title', 'transport service in ukraine', 'Explore Ukraine, because it is amazing and unique!')
+        .about-chess-wrapper
+            +about('about-transport', 0)
+            +about('about-transport', 0)
+        +contact-form('white-form', 'book this excursion', 0)
+        +popup
+block footer
+    +footer('white-footer')

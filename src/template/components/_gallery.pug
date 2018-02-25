@@ -1,0 +1,19 @@
+mixin gallery
+    section.gallery.slider-section
+        .slider-full-vertical
+            .slick-item
+                img(src='static/img/back-g-1.jpg')
+            .slick-item
+                img(src='static/img/back-g-2.jpg')
+            .slick-item
+                img(src='static/img/back-g-1.jpg')
+        .container
+            .arrow-container
+                a(href='#').slick-full-prev
+                    +svg('arrow-prev', '')
+                a(href='#').slick-full-next
+                    +svg('arrow-next', '')
+            .left-wrapper
+                .title-block
+                    h1 Gallery of ukraine
+                    h2 look for this amazing ukrainian pictures

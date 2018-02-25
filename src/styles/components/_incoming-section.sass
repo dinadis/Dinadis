@@ -1,0 +1,31 @@
+.incoming-section
+  width: 100%
+  min-height: 600px
+  background-image: url("../img/tours-img-1.jpg")
+  background-size: cover
+  position: relative
+  z-index: 1
+  +over-mask(0.5, -1)
+  .container
+    min-height: 600px
+  h1
+    position: relative
+    padding-top: 165px
+    max-width: 250px
+    margin: 0 auto
+    &:before
+      content: ''
+      position: absolute
+      left: 50%
+      transform: translateX(-50%)
+      bottom: -24px
+      height: 2px
+      width: 40px
+      background-color: $main-color
+  h2
+    padding-top: 50px
+    max-width: 300px
+    margin: 0 auto
+.wide-title
+  h1
+    max-width: 500px

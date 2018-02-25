@@ -1,0 +1,78 @@
+.services__item
+  display: flex
+  overflow: hidden
+  position: relative
+  .left-wrapper, .right-wrapper
+    width: 50%
+    height: 100%
+  .left-wrapper
+    +flex(column, center, center)
+    padding-top: 85px
+    padding-right: 35px
+    h3
+      max-width: 250px
+      text-align: center
+    ul
+      padding-top: 30px
+      text-align: center
+      +flex(column, flex-start, center)
+      li
+        padding-bottom: 9px
+        position: relative
+        line-height: 20px
+        text-transform: uppercase
+        letter-spacing: 0.5px
+        display: inline-block
+        &:before, &:after
+          content: ''
+          position: absolute
+          top: 10px
+          left: -30px
+          width: 20px
+          height: 1px
+          background-color: $main-color
+        &:after
+          left: auto
+          right: -30px
+    a
+      max-width: 280px
+      margin-top: 30px
+  .right-wrapper
+    overflow: hidden
+    position: relative
+    max-height: 500px
+    .slick-slide
+      overflow: hidden
+      display: inline-block
+      padding: 0
+      position: relative
+      &:before
+        background-color: #fff
+      img
+        object-fit: cover
+        font-family: "object-fit: cover;"
+        max-width: 100%
+        position: relative
+        z-index: 2
+    .slick-dots
+      position: absolute
+      bottom: 53px
+      transform: translateX(50%)
+      right: 50%
+      left: auto
+      top: auto
+      text-align: center
+      +flex(row, flex-start, center)
+      z-index: 5
+    .slick-dot
+      width: 5px
+      padding: 0
+      margin: 0 5px
+      height: 5px
+      background-color: $white-color
+      &:before, &:after
+        display: none
+    .slick-active
+      a
+        background-color: $main-color
+

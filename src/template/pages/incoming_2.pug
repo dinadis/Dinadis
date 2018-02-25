@@ -1,0 +1,12 @@
+extends ../extend/default
+block variables
+    - var title = 'Incoming page';
+
+block main
+    main.content(data-page='sub')
+        +loader
+        +incoming-section('', 'tours in ukraine', 'Explore Ukraine, because it is amazing and unique!')
+        +desc-block('', 'center', 0, 0)
+        +filter-block_1('filter-block_2')
+        +contact-form('', 'contact us', 0)
+        +popup

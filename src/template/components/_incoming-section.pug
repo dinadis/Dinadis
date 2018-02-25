@@ -1,0 +1,10 @@
+mixin incoming-section($class, $title, $desc)
+    section.incoming-section(class=$class).parallax
+        .container.center
+            h1= $title
+            h2= $desc
+            ul.breadcrumb
+                li.link-bottom-line
+                    a(href='#') home
+                li.active
+                    span tours in ukraine

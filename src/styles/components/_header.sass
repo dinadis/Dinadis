@@ -1,0 +1,65 @@
+.header
+  position: fixed
+  top: 0px
+  padding: 21px 0
+  left: 0
+  width: 100%
+  height: 90px
+  z-index: 99
+  +over-mask-header(0.65)
+.header-scroll
+  &:before
+    transform: scaleY(1)
+.logo-wrapper
+  height: 40px
+  width: 33%
+  text-align: left
+  svg
+    width: 150px
+    height: 100%
+.flex-wrapper
+  +flex(row, space-between, center)
+  width: 100%
+  height: 100%
+.lang-wrapper
+  text-align: center
+  width: 33%
+  a
+    color: #fff
+    text-decoration: none
+    text-transform: uppercase
+    font-size: 14px
+    letter-spacing: 0.5px
+    transition: .3s
+    position: relative
+    padding: 0 5px
+
+    &:hover
+      color: $main-color
+      &:before
+        opacity: 1
+        bottom: -2px
+      &:after
+        opacity: 1
+        bottom: -2px
+        transition-delay: 0.15s
+.nav
+  +flex(row, flex-end, center)
+  width: 33%
+  li
+    margin-left: 30px
+    &:first-child
+      margin-left: 0
+    a
+      text-transform: uppercase
+      color: #fff
+      text-decoration: none
+      font-size: 14px
+      position: relative
+      padding: 0 5px
+      transition: .3s
+  .active
+    a
+      color: $main-color
+      &:before
+        transform: scaleX(1);

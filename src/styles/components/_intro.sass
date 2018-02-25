@@ -1,0 +1,43 @@
+.link-video
+  +flex(row, flex-start, center)
+  color: #fff
+  text-decoration: none
+  text-transform: uppercase
+  .img-wrapper
+    width: 80px
+    height: 80px
+    background-color: $main-color
+    border-radius: 50%
+    position: relative
+    z-index: 1
+    +flex(row, center, center)
+    &:before
+      content: ''
+      position: absolute
+      top: -20px
+      left: -20px
+      width: 120px
+      height: 120px
+      background-color: $main-color
+      border-radius: 50%
+      z-index: 0
+      animation: pulse 2s ease
+      animation-iteration-count: infinite
+    svg
+      transition: .3s
+      position: relative
+      z-index: 1
+  .text-wrapper
+    padding-left: 32px
+    max-width: 135px
+    font-size: 14px
+    letter-spacing: 0.5px
+    line-height: 20px
+    transition: .3s
+  +res('desk-min')
+    &:hover
+      svg
+        transform: scale(1.2)
+      .text-wrapper
+        color: $main-color
+

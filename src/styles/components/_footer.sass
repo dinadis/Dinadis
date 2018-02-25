@@ -1,0 +1,43 @@
+footer
+  width: 100%
+  background-color: $dark
+  .container
+    +flex(row, space-between, center)
+    a
+      color: $white-color
+      font-family: $text
+      font-size: 12px
+      letter-spacing: 0.5px
+      text-decoration: none
+      transition: .3s
+      +res('desk-min')
+        &:hover
+          color: $main-color
+    p
+      color: $white-color
+      font-size: 12px
+      letter-spacing: 0.5px
+      font-family: $text
+      line-height: 90px
+    .right
+      display: flex
+      a
+        transition: .3s
+      a:last-child
+        margin-left: 35px
+.white-footer
+  background-color: $milk
+  .container
+    .left, .right
+      a,p
+        color: $text-color
+        &:before
+          background-color: $main-color
+    .center
+      a,p
+        color: $title-color
+    .left, .right
+      a
+        +res('desk-min')
+          &:hover
+            color: $main-color

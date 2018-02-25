@@ -1,0 +1,61 @@
+.slider-section
+  width: 100%
+  min-height: 100vh
+  background-size: cover
+  position: relative
+  z-index: 1
+  overflow: hidden
+  background-color: #000
+  .container
+    height: 100%
+    +flex(row, space-between, center)
+  .left-wrapper
+    min-height: 100vh
+    padding-top: 250px
+    width: 50%
+    +res('desk')
+      padding-top: 200px
+    +flex(column, space-between, flex-start)
+    h1
+      max-width: 445px
+      position: relative
+      &:before
+        content: ''
+        position: absolute
+        left: 0
+        bottom: -24px
+        height: 2px
+        width: 40px
+        background-color: $main-color
+    h2
+      min-height: 100%
+      padding-top: 53px
+      max-width: 355px
+    a
+      //padding-bottom: 40px
+      text-decoration: none
+      position: relative
+      bottom: 40px
+      overflow: hidden
+      span
+        margin: 0
+        margin-left: 10px
+        color: #fff
+        text-transform: uppercase
+        font-size: 12px
+        line-height: 15px
+        letter-spacing: 0.5px
+      +flex(row, flex-start, center)
+    .icon-arrow-down
+      animation: scrollDown 2s ease
+      animation-iteration-count: infinite
+  .right-wrapper
+    min-height: 100vh
+    padding-bottom: 185px
+    padding-left: 185px
+    width: 50%
+    +flex(column, center, flex-start)
+    +res('desk')
+      justify-content: flex-start
+      padding-top: 325px
+      padding-bottom: 0

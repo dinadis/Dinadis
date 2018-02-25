@@ -1,0 +1,8 @@
+- var $lis = ['Arrival to Kyiv', 'Transfer to the hotel. Check-in. Breakfast.'];
+mixin popup
+    .popup
+        .popup-bg
+        .popup-body
+            +svg('cross', 'closeBtn')
+            +desc-block('desc-block_2', '', 'static/img/inside-img-2.jpg', $lis)
+            +contact-form('white-form', 'book this excursion', '3 hours. 600 uah')

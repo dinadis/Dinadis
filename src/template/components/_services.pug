@@ -1,0 +1,16 @@
+- var lis1 = ['Exclusive Terms', 'Well-balanced deliveries', 'Exclusive Terms', 'Well-balanced deliveries'];
+- var images1 = ['static/img/service-image-1.jpg', 'static/img/service-image-1.jpg'];
+- var lis2 = ['Exclusive Terms', 'Well-balanced deliveries', 'Exclusive Terms', 'Well-balanced deliveries'];
+- var images2 = ['static/img/service-image-2.jpg', 'static/img/service-image-2.jpg'];
+- var lis3 = ['Exclusive Terms', 'Well-balanced deliveries', 'Exclusive Terms', 'Well-balanced deliveries'];
+- var images3 = ['static/img/service-image-3.jpg', 'static/img/service-image-3.jpg'];
+- var lis4 = ['Exclusive Terms', 'Well-balanced deliveries', 'Exclusive Terms', 'Well-balanced deliveries'];
+- var images4 = ['static/img/service-image-4.jpg', 'static/img/service-image-4.jpg'];
+mixin services
+    section.services
+        .container
+            .services__items
+                +services_item('tours in ukraine', lis1, images1)
+                +services_item('hotels in ukraine', lis2, images2)
+                +services_item('excursions in ukraine', lis3, images3)
+                +services_item('transport services in ukraine', lis4, images4)

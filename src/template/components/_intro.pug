@@ -1,0 +1,26 @@
+mixin intro
+    section.intro.slider-section
+        //.slider-full-vertical
+        //    .slick-item
+        //        img(src='static/img/back.jpg')
+        //    .slick-item
+        //        img(src='static/img/back.jpg')
+        //    .slick-item
+        //        img(src='static/img/back.jpg')
+        video(autoplay muted loop).full-video
+            source(src="static/video/kiyv.mp4#t=6" type="video/mp4")
+        .video-overlay
+        .container
+            .left-wrapper
+                .title-block
+                    h1 Special offer for our clients
+                    h2.js-splitme continuation of a special offer for our clients
+                a(href='#').scroll-down-btn
+                    +svg('arrow-down', 'arrow-down')
+                    span see more
+            .right-wrapper
+                a(href='#').link-video
+                   .img-wrapper
+                        +svg('play-video', 'play')
+                   .text-wrapper
+                        p watch video about offer

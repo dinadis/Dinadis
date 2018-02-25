@@ -1,0 +1,15 @@
+mixin about($class, $title)
+    .about(class= $class)
+        .container
+            case $title
+                when 0
+                    - break
+                default
+                    h3= $title
+            .wrapper
+                .left-wrapper
+                    h4 dinadtis business travel slogan about company
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    p Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+                .right-wrapper.box-overlay
+                    img(src='static/img/about.jpg')

@@ -1,0 +1,12 @@
+extends ../extend/default
+block variables
+    - var title = 'Home page';
+
+block main
+    main.content(data-page='home')
+        +loader
+        +intro
+        +about('', 'about company')
+        +gallery
+        +services
+        +contact-form('', 'Contact us', 0)

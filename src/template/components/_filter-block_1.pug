@@ -1,0 +1,23 @@
+mixin filter-block_1($type)
+    section.filter-block_1
+        .container
+            ul.tabs
+                li.active
+                    span all cities
+                li
+                    a(href='#') kyiv
+                li
+                    a(href='#') lviv
+                li
+                    a(href='#') odesa
+                li
+                    a(href='#') dnepr
+            .filter-content__items(class= $type)
+                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)')
+                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)')
+                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)')
+                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)')
+                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)')
+                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)')
+            .btn-wrapper
+                +btn('#', 'show more tours', '')

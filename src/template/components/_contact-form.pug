@@ -1,0 +1,9 @@
+mixin contact-form($class, $title, $desc)
+    section.contact-form(class= $class)
+        .container
+            h3= $title
+            case $desc
+                when 0
+                    - break
+                default
+                    h4= $desc

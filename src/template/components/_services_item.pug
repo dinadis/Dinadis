@@ -1,0 +1,12 @@
+mixin services_item($title, $lis, $images)
+    .services__item
+        .left-wrapper
+            h3= $title
+            ul
+                each li in $lis
+                    li= li
+            +btn('#', 'learn more', '')
+        .right-wrapper.services-slider
+            each image in $images
+                .services-slider__img
+                    img(src= image)

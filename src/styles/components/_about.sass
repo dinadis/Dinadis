@@ -1,0 +1,57 @@
+.about
+  min-height: 300px
+  padding-bottom: 80px
+  h3
+    text-align: center
+    padding: 75px 0 65px 0
+  .wrapper
+    +flex(row, space-between, flex-start)
+    .left-wrapper
+      width: 50%
+      h4
+        max-width: 250px
+        +res('desk')
+          padding-top: 55px
+        &:before
+          content: ''
+          width: 40px
+          height: 1px
+          background-color: $main-color
+          position: absolute
+          bottom: -15px
+          left: 0
+      p
+        font-family: $text
+        color: $text-color
+        font-size: 14px
+        line-height: 21px
+        letter-spacing: 0.25px
+        padding-top: 30px
+        max-width: 340px
+        &:first-child
+          padding-top: 55px
+        +res('desk')
+          padding-top: 50px
+          &:nth-of-type(n + 2)
+            padding-top: 20px
+    .right-wrapper
+      width: 50%
+      img
+        max-width: 100%
+.about-chess-wrapper
+  padding-top: 80px
+  .box-overlay
+    &:before
+      display: none
+  .about
+    &:nth-child(even)
+      .wrapper
+        flex-direction: row-reverse
+        .left-wrapper
+          padding-left: 20px
+          padding-right: 0
+    .wrapper
+      .left-wrapper
+        padding-right: 20px
+        p
+          max-width: 100%

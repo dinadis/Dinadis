@@ -1,0 +1,18 @@
+mixin desc-block($type, $align, $img, $lis)
+    section.desc-block(class= $type)
+        .container(class= $align)
+            h4 some small and good text about tours in ukraine country
+            case $lis
+                when 0
+                    - break
+                default
+                    ul
+                        each li in $lis
+                            li= $lis
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut labore od tempor.
+            p Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+            case $img
+                when 0
+                    - break
+                default
+                    img(src= $img)

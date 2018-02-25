@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incoming page</title>
+    <link href="static/css/index.css" rel="stylesheet">
+    <link rel="icon" href="static/favicon.ico">
+  </head>
+  <body>
+    <!-- SVG-->
+    <div class="svg-container" style="position: absolute; width: 0; height: 0; overflow: hidden;">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <symbol id="icon-arrow-down" viewBox="0 0 12 15">
+          <image data-name="Layer 15 copy 2" width="12" height="15" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAPCAQAAAB66ObCAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfiAhIWNwJxKsKHAAAAfUlEQVQY073QoQ6BARiF4TOjiZJgo0hESZZ1dydTTDVBEyWK9kuCC2CPYPyM7Jx03jd9X+TVmXW5qinTT70clTchfouP/Ee0fvJOJbPMv/A0ixhjJeKgELHEJGKIrZq9Qmww8jhXD3tHJzsM5Cmi7ebqhu6DlL9tOLtoPvcdtz1mGr5mKiEAAAAASUVORK5CYII="
+          />
+        </symbol>
+        <symbol id="icon-arrow-next" viewBox="0 0 15 12">
+          <image data-name="Layer 15 copy 3" width="15" height="12" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAMCAQAAAAXSy9vAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfiAhgVAQULqZhsAAAAc0lEQVQY03XQoQ6BARTF8fNteAKbTbBRvqRKsqx7O11TTdC+aIKXkIjsJym456Sz/3Z3z4l8eeZi80nx6y1WNY49FjWOE9oaxxnjxjFt5FdNRrn3csvjD5ZB5Fmd7rt6GVa4w7R67YB5VWyHZTXLRGf9SW9rV7EVVmvKDwAAAABJRU5ErkJggg=="
+          />
+        </symbol>
+        <symbol id="icon-arrow-prev" viewBox="0 0 15 12">
+          <image data-name="Layer 15 copy 2" width="15" height="12" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAMCAQAAAAXSy9vAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfiAhgVARvxpqUPAAAAfklEQVQY03XOrQ7CQBBF4bNJCZUkoBAkYFDYKjQaz9vhcVgUrrKpqEbzBCTkIPojlt25Zm6+ZDLIkLO1m6kNGZejeotx5IP6+Meet2qdQsGVXztnaQ6+WfDiQyCeQFNQECiZQ4KXuFab9On+tb36zDNW6j3PeFKvecaLrbuYfzVlrBnGQAXvAAAAAElFTkSuQmCC"
+          />
+        </symbol>
+        <symbol id="icon-cross" viewBox="0 0 612 612">
+          <path d="M612 36.004L576.521.603 306 270.608 35.478.603 0 36.004l270.522 270.007L0 575.997l35.478 35.4L306 341.411l270.521 269.986 35.479-35.4-270.541-269.986z" />
+        </symbol>
+        <symbol id="icon-logo" viewBox="0 0 150 40">
+          <image width="150" height="40" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAoCAMAAAArH/PVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA/FBMVEVZi8tai8tajMtZi8r///9ai8tZi8pZi8tZi8tajMtZi8pZi8tai8tZi8tajMtajMtai8tZi8tZi8tZi8pZi8pZi8tai8tZi8tZi8tai8tZi8pai8tZi8pZi8tai8tai8tajMtai8tZi8pajMtai8tajMtZi8tZi8tZi8pajMtajMtai8tai8tZi8pZi8tZi8pZi8tZi8pZi8tajMtajMtai8tZi8pajMtZi8pajMtai8tajMtZi8pai8tZi8pajMv///////////////////////////////////////////////////////////9Zi8pajMtai8tZi8sAAADoPE1MAAAAT3RSTlMAAAAAADDfv3AgYN/fYI/vzzAgnzCAcM+fYBCP7xCAr0C/z59AUO9AcL8wEO+vr79Qj48Q31CAr0CAIHAgn1DPML+PEGBQn68gQIDPcO/fFJNWBQAAAAFiS0dEU3pnHQYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfiAhIWCzjE1WLKAAAIh0lEQVRYw62X+1taORPHcy4LKLUuIIIULN5Qt1asWrZ2XZebHLnU5Mz//8fszORyciju7vO8b37Q5CSZfDLzzSQIqVKpQAS/SFCFYmkrDEUgRIRlu6wAUinf7QgRhu93QSlZFKbsvMMu+LUicqVa24t0MR/qgGahKIJ9nN1oHrREQF0Blg9tmWIvNIyNzmEhrYjgY1dUjwIRVY4BEAuHb20XpTzZIizmEjtSKbVDzRDLaQMxS5YgOJO98yBPJZqylscS4kKCvAyDQIS/1duyV//EXcQVNZWEK7uxShk+t2i/V83rfiQicaNSELSLMEIj8oo5BJv+LKEhLFbQ6gG0OxYr/HIrLFZgSlu210BFVFMp+hixQvGpKdXxnp0R3iFx3U6/h77ezF4Pa/jpFN1ssaJtqeRXYbiiAYAOG2NFNynANVVD6h4cBkGe6gDlsLNGhTYcViBqMi10LFaIMbwxjQNQFcFYUQmOyO456of9TljRe5DOI6KuVJ9jorHE76jEM65jOayve+ZaQaY+ZwNUUe8MsTr3EopmY0KgdM/d1NRuRLSLtJ1vMrVYuNinXSmbdl4d4DI0hWXZQ+g706hueT38oV1CmVbXsVJpbFDMd9BDXWrQilJjUbWvVMfGqHYZEpbSWBFjBSdS7d45LLt7szit+55G2cj65eH2O6QwWBN9PQUPS+wq+GgNAKhvZmRRpX+gRUFxOdNYdBJ5Gf57g669cdqSR0Y3xidFJeWpMbuOVd4LrqUsR/kykFaf3KyZ1bS3gLDI3EdI2xXCwvLI+jxnyWe5B2Q6MIMPQfaNdUP3vQfpO+ONNaruMeY6pVfKpS6lvaW/XqQKrKCMtsjuPnquXEEsPHt65rkNojGkFHudsaSTsD1tGFel42SwbEfwZwn32paqlpdcXaq+57xvUsKTWQvS1Aaxc4Wn/OoPh4UJAhNx6O3nWLKL8tpyXOIYvbmXYTmqT70WfvwCsnfnW8MgplmSQZ+i/OwRRvlbx4knhekTyk+IFWgsF0Rt/0jBkdEkBsDfKZc99GZDuKbDOrimrVRwjzs2ZWkslRobmgsU51CqKlBd69dop423YArFXyLyl+8th2VdVAfw85DbPpQcluvsc2YUDYDjfIKQ9iTqCahze1gxdXdtvCPxHZMESNne1mE8d1i6XCrnIjxFfW99LZdOWcre4zpW1Vw7JbSWS111lfc4CurCaSvDonvmrIwRTuHPKNIJIu8tCTV3Ep1JL3l1gZ4Sa7HFG5Ld2cItv/c1X1fSx9qTUlqdo2/OM/4gCju3eE5BXTAWik0D6YkY4wfj8sE6Fi8VYu6RpTVvlasmyk2AQj6I8tKLRTdNpfWmL3majdbP8JKR8MhYUnrbaaXK5V7UVt9b3eqDnhJXrRzWjRPUjb2AM20VvQN1gK+QtXTKWaqjRRLu9VD3Nc5bJsvread47dkjduh26o44szzhTj4Ln+tk29ULmLpyWOmRd0/cKmhmWHwS2XHER1hRF92lBL8gUpuUsHyRHEMdxDT3IsjO0zU+Nm88rA60XLb4gE7oZOMfQG/NXD732eWFWd5dCVZkYRTW8Dyy5BVLPuKxnV3wHjagjhyvqNw5rMe2hF4rw9ppZvUqrnaRNV2S4Zn4Lihq31HeUk795UO3zDk+WvlhA6QtwsJFH5TKXnJo0sMq2q1h2cd3+CBbu/E1GyaO8U2bOXag02DEWJjWrh6dXzEb2CAWy+4xjXkU0NEYTCCHM9a2kic2ddLhBn6SaStHHhamEZVtsCr13W83I6V9U7ENeg5rrKZsV1wWDHWCYK4GfLP63ldwjeq/8bAepCyFVpGR6AP8RXdnxOuXn9yLj0j0O5zH/a7uhLte8BlhbnhWcU3RC4KxWp/lfcXxh3eIdYtiCln990Y6YQEfiiI8/wvvXgp1dLp/r5pVzuXaJTuUQ0oWqwm/buVO2KHNdU08bFWH9XiMl0raNFglvOk4iJ2zWrs3aJk4YLlDYNnrRpzH011V1FwnCvZDesbQ78SwqwpH9DuOswdDbRfSlH4nXm0T1oeepB91Hlfj0FD1EUNCwWCdoOLp1yFHf0DPAvolU5eN4vuvgogM1S12KEzqhd9Y/adb/cItghWh8IS5hPwb6kwZ6N+WoYhj+zqgCFpvZRk9jmOrT/M24FssimL3HrA+D/WPTvoiQm0j0rM5YIF+JqPvgzB63N8KowE+xjZj4arxm1ixLRpLD9VY/NnDoq4NWHHsuDIs/N1JOPrwMpZZhrB4QuwXxqL/CBCJtc6sEJa1Y7EyftOlsexHEWss0yYjHlb8byXy6v8w2ncjYb2Fn2uGwb9a+z8W8T9bRQPDEZbxhFrDKX8c89/n0WzktadenaeMuDqZJcnsRU9IxmZCnA3iUVRNXJcZPtOtZ/o+5qFDWmZosOYL6lxSi6txPOL6aIJrrlx78WOY9S3c4ss5Nl/54xInLLIebxz9n8xs41VvezbUi71Yq1wWcx8rt9wo6/fa09FkA9a6wVzxsXAHxllDXZmzu16STVZEbo6PtRqvYc2ns03eerG11ew/YU2WuEM9lbY5fn4LazafPyerdax4/Doe5rDi2dRi4ZT5fKhDkkwneth4aSdsxJpq7NU0nugFpiuG5BXI3nzyE9Zs/BNWPHmecdwc1gRFuY6Fel4tpwbjebYcbsR6RcnPNP0ytrIipOnqTSyemwwzM0lmN/GxYlTFehDZ/sjBDJONWAs8jIY8wfUX2nGzuQ7kP2iLm8OZXiUzPMphoeA2Yf10PDYF0ZzRZEFF0wxnw9n6rDzW5JWly9ueTc1WKCp5rDj5kcd6ptBMWPc8Yf6WtzB6ZPtFA6xM7JL521gY+NHyWcdglCyW+gi+JMkiyWuL8H9YrZh0ulqOx1pbk2RpJ2zEeiFVmUNolD5dWh+7dLpYUu1vDcW5pg3VVq4AAAAASUVORK5CYII="
+          />
+        </symbol>
+        <symbol id="icon-play-video" viewBox="0 0 14 16">
+          <image data-name="Forma 1" width="14" height="16" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAQAAACMnYaxAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfiAhIXGBJ/Q4C5AAAAhklEQVQY03XRoQoCURCF4esimsQiGASfwWAz7NNYbCZfw2K0mCxWs0kQk8G3EAyKRXY/g3HvnIk/HGb+SY4+9kZSc5J/XpbaEYSbWQypbQ0iCA9zRQThbBJDvtZ6LVKUS5HidKPaykY/D6+m+YWeFvlTajvDvIS7Mq/vbaXTFH9SORjnXvYDne0w+ca4PccAAAAASUVORK5CYII="
+          />
+        </symbol>
+        <symbol id="icon-vintage-logo" viewBox="0 0 84.1 115.5">
+          <style>
+            .st0 {
+              fill: #000
+            }
+          </style>
+          <path d="M21.7 0H0l5.1 19.8h21.5z" />
+          <path d="M63.2 0L33.7 115.5h21L84.1 0z" />
+        </symbol>
+      </svg>
+    </div>
+    <!-- picture element HTML5 shiv-->
+    <script>
+      document.createElement('picture');
+    </script>
+    <!-- Header-->
+    <header class="header">
+      <div class="container">
+        <div class="flex-wrapper">
+          <div class="logo-wrapper">
+            <a href="#">
+              <svg class="icon-logo logo">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-logo"></use>
+              </svg>
+            </a>
+          </div>
+          <div class="lang-wrapper link-bottom-line">
+            <a href="#">на русском</a>
+          </div>
+          <ul class="nav">
+            <li class="active link-bottom-line">
+              <a href="#">home</a>
+            </li>
+            <li class="link-bottom-line">
+              <a class="services-btn" href="#">services</a>
+            </li>
+            <li class="link-bottom-line">
+              <a class="contact-us-btn" href="#">contact us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- Main content-->
+    <main class="content" data-page="sub">
+      <div class="loader">
+        <div class="loader__inside"></div>
+      </div>
+      <section class="incoming-section parallax">
+        <div class="container center">
+          <h1>tours in ukraine</h1>
+          <h2>Explore Ukraine, because it is amazing and unique!</h2>
+          <ul class="breadcrumb">
+            <li class="link-bottom-line">
+              <a href="#">home</a>
+            </li>
+            <li class="active">
+              <span>tours in ukraine</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="desc-block">
+        <div class="container center">
+          <h4>some small and good text about tours in ukraine country</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut labore od tempor.</p>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+        </div>
+      </section>
+      <section class="filter-block_1">
+        <div class="container">
+          <ul class="tabs">
+            <li class="active">
+              <span>all cities</span>
+            </li>
+            <li>
+              <a href="#">kyiv</a>
+            </li>
+            <li>
+              <a href="#">lviv</a>
+            </li>
+            <li>
+              <a href="#">odesa</a>
+            </li>
+            <li>
+              <a href="#">dnepr</a>
+            </li>
+          </ul>
+          <div class="filter-content__items">
+            <a class="filter-content__item" href="">
+              <div class="filter-img">
+                <img src="static/img/filter-img-1.jpg" />
+              </div>
+              <div class="filter-title">
+                <h4>tour in Kyiv - Lviv - Odesa with a great trip</h4>
+              </div>
+              <div class="filter-desc">
+                <p>February 11 (6 days)</p>
+              </div>
+            </a>
+            <a class="filter-content__item" href="">
+              <div class="filter-img">
+                <img src="static/img/filter-img-1.jpg" />
+              </div>
+              <div class="filter-title">
+                <h4>tour in Kyiv - Lviv - Odesa with a great trip</h4>
+              </div>
+              <div class="filter-desc">
+                <p>February 11 (6 days)</p>
+              </div>
+            </a>
+            <a class="filter-content__item" href="">
+              <div class="filter-img">
+                <img src="static/img/filter-img-1.jpg" />
+              </div>
+              <div class="filter-title">
+                <h4>tour in Kyiv - Lviv - Odesa with a great trip</h4>
+              </div>
+              <div class="filter-desc">
+                <p>February 11 (6 days)</p>
+              </div>
+            </a>
+            <a class="filter-content__item" href="">
+              <div class="filter-img">
+                <img src="static/img/filter-img-1.jpg" />
+              </div>
+              <div class="filter-title">
+                <h4>tour in Kyiv - Lviv - Odesa with a great trip</h4>
+              </div>
+              <div class="filter-desc">
+                <p>February 11 (6 days)</p>
+              </div>
+            </a>
+            <a class="filter-content__item" href="">
+              <div class="filter-img">
+                <img src="static/img/filter-img-1.jpg" />
+              </div>
+              <div class="filter-title">
+                <h4>tour in Kyiv - Lviv - Odesa with a great trip</h4>
+              </div>
+              <div class="filter-desc">
+                <p>February 11 (6 days)</p>
+              </div>
+            </a>
+            <a class="filter-content__item" href="">
+              <div class="filter-img">
+                <img src="static/img/filter-img-1.jpg" />
+              </div>
+              <div class="filter-title">
+                <h4>tour in Kyiv - Lviv - Odesa with a great trip</h4>
+              </div>
+              <div class="filter-desc">
+                <p>February 11 (6 days)</p>
+              </div>
+            </a>
+          </div>
+          <div class="btn-wrapper">
+            <a class="btn" href="#">
+              <p>show more tours</p>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="contact-form">
+        <div class="container">
+          <h3>contact us</h3>
+        </div>
+      </section>
+    </main>
+    <!-- Footer-->
+    <footer>
+      <div class="container">
+        <div class="left">
+          <p>Let’s talk -
+            <a href="mailto:office@dinadis.ua">office@dinadis.ua</a>
+          </p>
+        </div>
+        <div class="center">
+          <p>© 2018 DINADIS. All rights reserved.</p>
+        </div>
+        <ul class="right">
+          <li class="link-bottom-line">
+            <a href="#">Facebook</a>
+          </li>
+          <li class="link-bottom-line">
+            <a class="link-bottom-line" href="#">LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <!-- Scripts-->
+    <script src="static/js/index.jquery.js"></script>
+    <script src="static/js/index.js"></script>
+  </body>
+</html>

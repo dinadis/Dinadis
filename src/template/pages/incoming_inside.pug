@@ -1,0 +1,13 @@
+extends ../extend/default
+block variables
+    - var title = 'Incoming page';
+    - var $lis = ['Arrival to Kyiv', 'Transfer to the hotel. Check-in. Breakfast.'];
+block main
+    main.content(data-page='sub')
+        +loader
+        +incoming-section('incoming-inside', 'tour in kyiv - lvyv - odesa with a great trip', '11 days. 2000 uah')
+        +desc-block('desc-block_2', '', 'static/img/inside-img-2.jpg', $lis)
+        +desc-block('desc-block_2', '', 'static/img/inside-img-2.jpg', $lis)
+        +contact-form('white-form', 'book this tour', '11 days. 2000 uah')
+block footer
+    +footer('white-footer')

@@ -1,0 +1,16 @@
+mixin header()
+    header.header
+        .container
+            .flex-wrapper
+                .logo-wrapper
+                    a(href='#')
+                        +svg('logo', 'logo')
+                .lang-wrapper.link-bottom-line
+                    a(href='#') на русском
+                ul.nav
+                    li.active.link-bottom-line
+                        a(href='#') home
+                    li.link-bottom-line
+                        a(href='#').services-btn services
+                    li.link-bottom-line
+                        a(href='#').contact-us-btn contact us
