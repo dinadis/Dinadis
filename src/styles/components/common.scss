@@ -133,12 +133,6 @@ h4 {
 // no body scroll
 .lock {
   overflow: hidden !important;
-  @media only screen and (min-width: 1200px) {
-    section, header, footer {
-      padding-right: 17px;
-    }
-
-  }
 }
 
 // reset scroll default styles from "mCustom scrollbar"

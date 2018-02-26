@@ -14393,7 +14393,7 @@ var tl = new TimelineMax();
 //
 tl.from('.loader__inside', 2, { delay: 1, scale: 0, onComplete: function onComplete() {
     $('.loader').remove();
-  } }).fromTo('h1', 1, { x: -100, opacity: 0 }, { x: 0, opacity: 1 }, '-=0.7').from('h2', 1, { x: 100, opacity: 0 }, '-=0.7').from('h3', 1, { x: 100, opacity: 0 }, '-=0.7').from('h4', 1, { x: 100, opacity: 0 }, '-=0.7').from('p', 1, { x: 100, opacity: 0 }, '-=0.7').from('.link-video', 1, { x: 100, opacity: 0 }, '-=0.5').fromTo('.logo', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.5').fromTo('.lang-wrapper', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7').staggerFromTo('.nav li', 0.5, { opacity: 0, y: 30 }, { opacity: 1, y: 0 }, 0.03).from('.scroll-down-btn', 1, { y: 100, opacity: 0 }, '-=0.5').staggerFrom('.breadcrumb li', 1, { y: 50, opacity: 0 }, 0.3, '-=0.5');
+  } }).fromTo('h1', 1, { x: -100, opacity: 0 }, { x: 0, opacity: 1 }, '-=0.7').from('h2', 1, { x: 100, opacity: 0 }, '-=0.7').from('h3', 1, { x: 100, opacity: 0 }, '-=0.7').from('h4', 1, { x: 100, opacity: 0 }, '-=0.7').from('p', 1, { x: 100, opacity: 0 }, '-=0.7').from('.link-video', 1, { x: 100, opacity: 0 }, '-=0.5').fromTo('.logo', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '-=1').fromTo('.lang-wrapper', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7').staggerFromTo('.nav li', 0.5, { opacity: 0, y: 30 }, { opacity: 1, y: 0 }, 0.03).from('.scroll-down-btn', 1, { y: 100, opacity: 0 }, '-=0.5').staggerFrom('.breadcrumb li', 1, { y: 50, opacity: 0 }, 0.3, '-=0.5');
 //
 
 /***/ }),
@@ -17196,41 +17196,46 @@ var _gsap = __webpack_require__(3);
 
 var _helpers = __webpack_require__(0);
 
-var popupBody = $('.popup-body');
-var popUpBg = $('.popup-bg');
-var popUp = $('.popup');
-var tl = new TimelineLite();
-var closeBtn = $('.closeBtn');
-var btn = $('.filter-content__item');
+_helpers.$document.ready(function () {
+  var scrollbarWidth = __webpack_require__(32)();
+  var popupBody = $('.popup-body');
+  var popUpBg = $('.popup-bg');
+  var popUp = $('.popup');
+  var tl = new TimelineLite();
+  var closeBtn = $('.closeBtn');
+  var btn = $('.filter-content__item');
 
-// initialize gsap animation
-tl.from(popUpBg, 0.5, { opacity: 0, zIndex: -1 }) // show popup background
-.from(popupBody, 0.5, { x: '-100%', zIndex: -1, ease: Power2.easeOut }); // show popup body
-// pause gsap
-tl.pause();
-// click on tour item
-btn.on('click', function (e) {
-  $('.popup').addClass('active-popup');
-  // lock body scroll
-  _helpers.$body.addClass('lock');
-  e.preventDefault();
-  // play gsap animation
-  tl.play();
-});
-// close popup function
-function closePopup() {
-  // reverse play gsap animation
-  tl.reverse();
-  setTimeout(function () {
-    $('.popup').removeClass('active-popup');
-    _helpers.$body.removeClass('lock');
-  }, 1000);
-}
-popUpBg.on('click', function () {
-  closePopup();
-});
-closeBtn.on('click', function () {
-  closePopup();
+  // initialize gsap animation
+  tl.from(popUpBg, 0.5, { opacity: 0, zIndex: -1 }) // show popup background
+  .from(popupBody, 0.5, { x: '-100%', zIndex: -1, ease: Power2.easeOut }); // show popup body
+  // pause gsap
+  tl.pause();
+  // click on tour item
+  btn.on('click', function (e) {
+    $('.popup').addClass('active-popup');
+    // lock body scroll
+    _helpers.$body.addClass('lock');
+    $('section, header, footer').css({ 'padding-right': scrollbarWidth + 'px' });
+    e.preventDefault();
+    // play gsap animation
+    tl.play();
+  });
+  // close popup function
+  function closePopup() {
+    // reverse play gsap animation
+    tl.reverse();
+    setTimeout(function () {
+      $('.popup').removeClass('active-popup');
+      _helpers.$body.removeClass('lock');
+      $('section, header, footer').css({ 'padding-right': 0 });
+    }, 1000);
+  }
+  popUpBg.on('click', function () {
+    closePopup();
+  });
+  closeBtn.on('click', function () {
+    closePopup();
+  });
 });
 
 /***/ }),
@@ -19790,22 +19795,40 @@ if ($('.contact-form').length) {
   contactUs.on('click', function (e) {
     e.preventDefault();
     TweenLite.to(window, 2, {
-      scrollTo: formTop - header.outerHeight(),
+      scrollTo: formTop,
       ease: Power3.easeOut
     });
   });
 }
+var serviceBtn = $('.services-btn');
 
-if (_helpers.currentPage === 'home') {
-  var serviceBtn = $('.services-btn');
-  var servicesTop = $('section.services')[0].offsetTop;
-  serviceBtn.on('click', function (e) {
-    e.preventDefault();
+serviceBtn.on('click', function (e) {
+
+  var scrollToService = function scrollToService(servicesTop) {
     TweenLite.to(window, 2, {
       scrollTo: servicesTop,
       ease: Power3.easeOut
     });
-  });
+  };
+  if (_helpers.currentPage === 'home') {
+    e.preventDefault();
+    var servicesTop = $('section.services')[0].offsetTop;
+    scrollToService(servicesTop);
+  } else {
+    window.location = 'home.html#services';
+  }
+});
+console.log(window.location.hash);
+if (window.location.hash === '#services' && _helpers.currentPage === 'home') {
+  if ($('.services').length) {
+    var servicesTop = $('section.services')[0].offsetTop;
+    setTimeout(function () {
+      TweenLite.to(window, 2, {
+        scrollTo: servicesTop,
+        ease: Power3.easeOut
+      });
+    }, 2000);
+  }
 }
 
 /***/ }),
@@ -20007,89 +20030,22 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 "use strict";
 
 
-var _fancybox = __webpack_require__(32);
+var _fancybox = __webpack_require__(29);
 
 var _helpers = __webpack_require__(0);
 
 _helpers.$document.ready(function () {
-  $("[data-fancybox]").fancybox();
+  $("[data-fancybox]").fancybox({
+    afterShow: function afterShow() {
+      // After modal - play the video
+      var vid = document.getElementById("video_modal");
+      vid.play();
+    }
+  });
 });
 
 /***/ }),
-/* 29 */,
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Home page scripts.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @module Home
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
-
-var _helpers = __webpack_require__(0);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Home = function () {
-  /**
-   * Cache data, make preparations and initialize page scripts.
-   */
-  function Home() {
-    _classCallCheck(this, Home);
-
-    this.message = function () {
-      var message = 'Home page scripts initialized on';
-
-      if (_helpers.Resp.isDesk) {
-        return message + ' Desktop';
-      } else if (_helpers.Resp.isTablet) {
-        return message + ' Tablet';
-      } else if (_helpers.Resp.isMobile) {
-        return message + ' Mobile';
-      }
-    }();
-
-    // initialize after construction
-    this.init();
-  }
-
-  /**
-   * Example method.
-   */
-
-
-  _createClass(Home, [{
-    key: 'example',
-    value: function example() {
-      console.log(this.message);
-    }
-  }, {
-    key: 'init',
-
-
-    /**
-     * Initialize Home page scripts.
-     */
-    value: function init() {
-      this.example();
-    }
-  }]);
-
-  return Home;
-}();
-
-exports.default = Home;
-
-/***/ }),
-/* 31 */,
-/* 32 */
+/* 29 */
 /***/ (function(module, exports) {
 
 // ==================================================
@@ -25244,6 +25200,127 @@ exports.default = Home;
     });
 
 }( document, window, window.jQuery || jQuery ));
+
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Home page scripts.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @module Home
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
+
+var _helpers = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Home = function () {
+  /**
+   * Cache data, make preparations and initialize page scripts.
+   */
+  function Home() {
+    _classCallCheck(this, Home);
+
+    this.message = function () {
+      var message = 'Home page scripts initialized on';
+
+      if (_helpers.Resp.isDesk) {
+        return message + ' Desktop';
+      } else if (_helpers.Resp.isTablet) {
+        return message + ' Tablet';
+      } else if (_helpers.Resp.isMobile) {
+        return message + ' Mobile';
+      }
+    }();
+
+    // initialize after construction
+    this.init();
+  }
+
+  /**
+   * Example method.
+   */
+
+
+  _createClass(Home, [{
+    key: 'example',
+    value: function example() {
+      console.log(this.message);
+    }
+  }, {
+    key: 'init',
+
+
+    /**
+     * Initialize Home page scripts.
+     */
+    value: function init() {
+      this.example();
+    }
+  }]);
+
+  return Home;
+}();
+
+exports.default = Home;
+
+/***/ }),
+/* 31 */,
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Generated by CoffeeScript 1.9.1
+(function() {
+  'use strict';
+  var getScrollbarWidth, scrollbarWidth;
+
+  scrollbarWidth = null;
+
+  getScrollbarWidth = function(recalculate) {
+    var div1, div2;
+    if (recalculate == null) {
+      recalculate = false;
+    }
+    if ((scrollbarWidth != null) && !recalculate) {
+      return scrollbarWidth;
+    }
+    if (document.readyState === 'loading') {
+      return null;
+    }
+    div1 = document.createElement('div');
+    div2 = document.createElement('div');
+    div1.style.width = div2.style.width = div1.style.height = div2.style.height = '100px';
+    div1.style.overflow = 'scroll';
+    div2.style.overflow = 'hidden';
+    document.body.appendChild(div1);
+    document.body.appendChild(div2);
+    scrollbarWidth = Math.abs(div1.scrollHeight - div2.scrollHeight);
+    document.body.removeChild(div1);
+    document.body.removeChild(div2);
+    return scrollbarWidth;
+  };
+
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function() {
+      return getScrollbarWidth;
+    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else if (typeof exports !== 'undefined') {
+    module.exports = getScrollbarWidth;
+  } else {
+    this.getScrollbarWidth = getScrollbarWidth;
+  }
+
+}).call(this);
 
 
 /***/ })

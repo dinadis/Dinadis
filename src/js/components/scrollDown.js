@@ -29,20 +29,39 @@ if ( $('.contact-form').length ) {
   contactUs.on('click', (e) => {
     e.preventDefault();
     TweenLite.to(window, 2, {
-      scrollTo: (formTop - header.outerHeight() ),
+      scrollTo: formTop,
       ease: Power3.easeOut
     });
   })
 }
+let serviceBtn = $('.services-btn');
 
-if ( currentPage === 'home' ) {
-  let serviceBtn = $('.services-btn');
-  let servicesTop = $('section.services')[0].offsetTop;
-  serviceBtn.on('click', (e) => {
-    e.preventDefault();
+serviceBtn.on('click', (e) => {
+
+  var scrollToService = (servicesTop) => {
     TweenLite.to(window, 2, {
       scrollTo: servicesTop,
       ease: Power3.easeOut
     });
-  })
+  }
+  if ( currentPage === 'home' ) {
+    e.preventDefault();
+    let servicesTop = $('section.services')[0].offsetTop;
+    scrollToService(servicesTop);
+  } else {
+    window.location = 'home.html#services'
+  }
+})
+console.log(window.location.hash);
+if ( window.location.hash === '#services' && currentPage === 'home' ) {
+  if ( $('.services').length ) {
+    let servicesTop = $('section.services')[0].offsetTop;
+    setTimeout(() => {
+      TweenLite.to(window, 2, {
+        scrollTo: servicesTop,
+        ease: Power3.easeOut
+      });
+    }, 2000)
+  }
+
 }

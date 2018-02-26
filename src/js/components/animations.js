@@ -28,7 +28,7 @@ tl
   .from('h4', 1, {x: 100, opacity: 0}, '-=0.7')
   .from('p', 1, {x: 100, opacity: 0}, '-=0.7')
   .from('.link-video', 1, {x: 100, opacity: 0}, '-=0.5')
-  .fromTo('.logo', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1}, '-=0.5')
+  .fromTo('.logo', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1}, '-=1')
   .fromTo('.lang-wrapper', 1, {y: -100, opacity: 0}, { y: 0, opacity: 1}, '-=0.7')
   .staggerFromTo('.nav li', 0.5, { opacity: 0, y: 30 }, { opacity: 1, y: 0 }, 0.03)
   .from('.scroll-down-btn', 1, {y: 100, opacity: 0}, '-=0.5')

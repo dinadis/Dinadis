@@ -17,6 +17,7 @@
     "malihu-custom-scrollbar-plugin": "^3.1.5",
     "object-fit-images": "^3.2.3",
     "object-fit-videos": "^1.0.4",
+    "scrollbar-width": "^3.1.1",
     "scrollmagic": "^2.0.5",
     "slick-carousel": "^1.8.1"
   },
