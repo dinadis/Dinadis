@@ -17,6 +17,7 @@ import './components/popup';
 import './components/customScroll';
 import './components/parallax';
 import './components/scrollDown';
+import './components/fancybox-modal';
 /** Import page controllers */
 import Home from './pages/Home';
 

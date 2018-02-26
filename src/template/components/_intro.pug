@@ -8,7 +8,7 @@ mixin intro
         //    .slick-item
         //        img(src='static/img/back.jpg')
         video(autoplay muted loop).full-video
-            source(src="static/video/kiyv.mp4#t=6" type="video/mp4")
+            source(src="static/video/kiyv.mp4#t=20" type="video/mp4")
         .video-overlay
         .container
             .left-wrapper
@@ -19,7 +19,7 @@ mixin intro
                     +svg('arrow-down', 'arrow-down')
                     span see more
             .right-wrapper
-                a(href='#').link-video
+                a(href='#main_screen__modal' data-fancybox).link-video
                    .img-wrapper
                         +svg('play-video', 'play')
                    .text-wrapper

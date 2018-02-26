@@ -1,6 +1,7 @@
 /* LIBS */
 @import 'libs/vintage-reset-normalize';
 @import 'libs/jquery.mCustomScrollbar.min';
+@import 'libs/jquery.fancybox.min';
 
 /* PARTIALS */
 @import 'partials/mixins';
@@ -33,6 +34,8 @@
 @import 'components/_filter-block_2';
 @import 'components/_footer';
 @import 'components/_popup';
+@import 'components/_animation';
+@import 'components/_modals';
 
 /* PAGES */
 @import 'pages/home';

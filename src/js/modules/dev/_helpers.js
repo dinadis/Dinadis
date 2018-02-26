@@ -3,7 +3,10 @@
  *
  * @module Helpers
  */
-import 'object-fit-images';
+import objectFitImages from 'object-fit-images';
+objectFitImages();
+import objectFitVideos from 'object-fit-videos';
+objectFitVideos();
 /**
  * Cache body DOM element.
  *

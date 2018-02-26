@@ -93,7 +93,7 @@
         <!--    .slick-item-->
         <!--        img(src='static/img/back.jpg')-->
         <video class="full-video" autoplay="autoplay" muted="muted" loop="loop">
-          <source src="static/video/kiyv.mp4#t=6" type="video/mp4" />
+          <source src="static/video/kiyv.mp4#t=20" type="video/mp4" />
         </video>
         <div class="video-overlay"></div>
         <div class="container">
@@ -110,7 +110,7 @@
             </a>
           </div>
           <div class="right-wrapper">
-            <a class="link-video" href="#">
+            <a class="link-video" href="#main_screen__modal" data-fancybox="data-fancybox">
               <div class="img-wrapper">
                 <svg class="icon-play-video play">
                   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-play-video"></use>
@@ -271,6 +271,11 @@
         </div>
       </section>
     </main>
+    <div style="display: none;">
+      <video class="fancybox-me" id="main_screen__modal" controls="">
+        <source src="static/video/kiyv.mp4" type="video/mp4">
+      </video>
+    </div>
     <!-- Footer-->
     <footer>
       <div class="container">
