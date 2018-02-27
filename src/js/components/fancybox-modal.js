@@ -7,6 +7,11 @@ $document.ready(() => {
       // After modal - play the video
       var vid = document.getElementById("video_modal");
       vid.play();
+    },
+    afterClose: () => {
+      var vid = document.getElementById("video_modal");
+      vid.pause();
     }
+
   });
 })
