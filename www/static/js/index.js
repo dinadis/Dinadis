@@ -13279,13 +13279,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /** Import initialized-by-default modules/libs */
 
-__webpack_require__(8);
-
 __webpack_require__(9);
 
 __webpack_require__(11);
-
-__webpack_require__(17);
 
 __webpack_require__(18);
 
@@ -13309,94 +13305,8 @@ var _helpers = __webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * Run appropriate scripts for each page.
- **/
-
-/** Import page controllers */
-switch (_helpers.currentPage) {
-  /** Home page */
-  case 'home':
-    new _Home2.default();break;
-
-  /** No page found */
-  default:
-    console.warn('Undefined page');
-}
-
 /***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * Website's common scripts (example).
- *
- * @module Common
- */
-
-var Common = exports.Common = function () {
-  /**
-   * Cache data, make preparations and initialize common scripts.
-   */
-  function Common() {
-    _classCallCheck(this, Common);
-
-    this.messages = {
-      constructor: 'Common.js: constructor()...',
-      init: 'Common.js: init()...',
-      example: 'Common.js: example()...'
-    };
-
-    console.log(this.messages.constructor);
-
-    // initialize after construction
-    this.init();
-  }
-
-  /**
-   * Example method.
-   */
-
-
-  _createClass(Common, [{
-    key: 'example',
-    value: function example() {
-      console.log(this.messages.example);
-    }
-  }, {
-    key: 'init',
-
-
-    /**
-     * Initialize common scripts.
-     */
-    value: function init() {
-      console.log(this.messages.init);
-
-      this.example();
-    }
-  }]);
-
-  return Common;
-}();
-
-/** Export initialized common scripts by default */
-
-
-exports.default = new Common();
-
-/***/ }),
+/* 8 */,
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17126,16 +17036,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
 
 
 /***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// document.querySelector('.full-video').addEventListener('loadedmetadata', function() {
-//   this.currentTime = 50;
-// }, false);
-
-
-/***/ }),
+/* 17 */,
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17168,47 +17069,24 @@ var _scrollmagic = __webpack_require__(5);
 
 var ScrollMagic = _interopRequireWildcard(_scrollmagic);
 
-var _helpers = __webpack_require__(0);
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-// let tlscroll = new TimelineMax();
-
-// let scene = new ScrollMagic.Scene({
-//   triggerElement: '.animated'
-// })
-//   tlscroll.from('.animated', 1, {x: 100, opacity: 0}, '-=0.7');
-//   scene.addTo(controller);
-
-
-// const ScrollMagic = require('ScrollMagic');
 var tl = new TimelineMax();
 
-//
-
-// import 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min';
-// import 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js';
-// include 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
-// import * as animationGsap from 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min';
-//
-
-
-// const TimelineMax = require('TimelineMax');
+// First screen animation
 tl.from('.loader__inside', 2, { delay: 1, scale: 0, onComplete: function onComplete() {
     $('.loader').remove();
   } }).fromTo('h1', 1, { x: -100, opacity: 0 }, { x: 0, opacity: 1 }, '-=0.7').from('h2', 1, { x: 100, opacity: 0 }, '-=0.7').from('a.link-video', 1, { y: 50, opacity: 0 }, '-=0.5').fromTo('.logo', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '-=1').fromTo('.lang-wrapper', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7').staggerFromTo('.nav li', 0.5, { opacity: 0, y: 30 }, { opacity: 1, y: 0 }, 0.03).from('.scroll-down-btn', 1, { y: 100, opacity: 0 }, '-=0.5').staggerFrom('.breadcrumb li', 1, { y: 50, opacity: 0 }, 0.3, '-=0.5');
 
+// Show elements on scroll
 var controller = new ScrollMagic.Controller();
-$('h3, h4, p, img, .btn, .services__item li').each(function () {
+$('h3, h4, p, .services-slider, .about img, .filter-img, .btn, .services__item ul, .tabs').each(function () {
   var currentElem = $(this)[0];
 
-  var tweenArticle = new TimelineMax()
-  // .from(currentElem, 3, {opacity:0, top:'-40px', ease: Power4.easeOut}, 0)
-  .from(currentElem, 1, { delay: 0.2, y: 50, opacity: 0, ease: Back.easeOut.config(1.5) });
+  var tweenArticle = new TimelineMax().from(currentElem, 1, { delay: 0.2, y: 50, opacity: 0, ease: Back.easeOut.config(1.5) });
 
   var scene = new ScrollMagic.Scene({ triggerElement: currentElem, triggerHook: 1 }).setTween(tweenArticle).addTo(controller);
 });
-//
 
 /***/ }),
 /* 20 */
@@ -18552,8 +18430,6 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 
 "use strict";
 
-
-var _gsap = __webpack_require__(3);
 
 var _helpers = __webpack_require__(0);
 
@@ -21177,17 +21053,14 @@ $('.parallax').jarallax({
 
 var _helpers = __webpack_require__(0);
 
-var _gsap = __webpack_require__(3);
-
 var _ScrollToPlugin = __webpack_require__(30);
 
-var header = $('header');
-
+// scroll down main page link
 if ($('.about').length) {
   var scrollAnchor = $('.about')[0];
   var posTop = scrollAnchor.offsetTop;
-  var tl = new _gsap.TimelineLite();
   var scrollBtn = $('.scroll-down-btn');
+  var header = $('header');
 
   scrollBtn.on('click', function (e) {
     e.preventDefault();
@@ -21201,7 +21074,7 @@ if ($('.about').length) {
 if ($('.contact-form').length) {
   var formTop = $('.contact-form')[0].offsetTop;
   var contactUs = $('.contact-us-btn');
-  console.log(formTop);
+
   contactUs.on('click', function (e) {
     e.preventDefault();
     TweenLite.to(window, 2, {
@@ -21228,14 +21101,13 @@ serviceBtn.on('click', function (e) {
     window.location = 'home.html#services';
   }
 });
-console.log(window.location.hash);
 if (window.location.hash === '#services' && _helpers.currentPage === 'home') {
   if ($('.services').length) {
     var servicesTop = $('section.services')[0].offsetTop;
     setTimeout(function () {
-      TweenLite.to(window, 2, {
+      TweenLite.to(window, 3, {
         scrollTo: servicesTop,
-        ease: Power3.easeOut
+        ease: Power3.easeInOut
       });
     }, 2000);
   }

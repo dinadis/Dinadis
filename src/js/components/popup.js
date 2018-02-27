@@ -1,4 +1,3 @@
-import { TweenMax } from 'gsap';
 import {
   $body,
   $document,

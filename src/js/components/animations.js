@@ -1,33 +1,10 @@
 import 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js';
 import { TweenMax } from 'gsap';
-// const ScrollMagic = require('ScrollMagic');
 import * as ScrollMagic from 'scrollmagic';
-// import 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min';
-// import 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js';
-// include 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
-// import * as animationGsap from 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min';
-//
-
-
-// const TimelineMax = require('TimelineMax');
-import {
-  $document as $doc,
-  $window as $win
-} from '../modules/dev/_helpers';
-
-// let tlscroll = new TimelineMax();
-
-// let scene = new ScrollMagic.Scene({
-//   triggerElement: '.animated'
-// })
-//   tlscroll.from('.animated', 1, {x: 100, opacity: 0}, '-=0.7');
-//   scene.addTo(controller);
-
-
 
 let tl = new TimelineMax();
 
-//
+// First screen animation
 tl
   .from('.loader__inside', 2, { delay: 1, scale: 0, onComplete: () => {
     $('.loader').remove();
@@ -41,19 +18,17 @@ tl
   .from('.scroll-down-btn', 1, { y: 100, opacity: 0 }, '-=0.5')
   .staggerFrom('.breadcrumb li', 1, { y: 50, opacity: 0 }, 0.3, '-=0.5');
 
-
+// Show elements on scroll
 let controller = new ScrollMagic.Controller();
-$('h3, h4, p, img, .btn, .services__item li').each(function(){
-  var currentElem = $(this)[0];
+$('h3, h4, p, .services-slider, .about img, .filter-img, .btn, .services__item ul, .tabs').each(function(){
+  let currentElem = $(this)[0];
 
 
-  var tweenArticle = new TimelineMax()
-  // .from(currentElem, 3, {opacity:0, top:'-40px', ease: Power4.easeOut}, 0)
+  let tweenArticle = new TimelineMax()
     .from(currentElem, 1, {delay: 0.2, y: 50, opacity: 0, ease: Back.easeOut.config(1.5) } );
 
-  var scene = new ScrollMagic.Scene({ triggerElement: currentElem, triggerHook: 1 })
+  let scene = new ScrollMagic.Scene({ triggerElement: currentElem, triggerHook: 1 })
     .setTween(tweenArticle)
     .addTo(controller);
 
 });
-//
