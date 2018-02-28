@@ -20,9 +20,8 @@ tl
 
 // Show elements on scroll
 let controller = new ScrollMagic.Controller();
-$('h3, h4, p, .services-slider, .about img, .filter-img, .btn, .services__item ul, .tabs').each(function(){
+$('h3, h4, p, .services-slider, .about img, .filter-img, .btn, .services__item ul, .tabs, .desc-block img').each(function(){
   let currentElem = $(this)[0];
-
 
   let tweenArticle = new TimelineMax()
     .from(currentElem, 1, {delay: 0.2, y: 50, opacity: 0, ease: Back.easeOut.config(1.5) } );

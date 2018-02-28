@@ -13,7 +13,7 @@ if ( $('.about').length ) {
   scrollBtn.on('click', (e) => {
     e.preventDefault();
     TweenLite.to(window, 2, {
-      scrollTo: (posTop - header.outerHeight() ),
+      scrollTo: ( posTop - header.outerHeight() ),
       ease: Power3.easeOut
     });
   });
