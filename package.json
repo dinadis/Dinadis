@@ -19,7 +19,8 @@
     "object-fit-videos": "^1.0.4",
     "scrollbar-width": "^3.1.1",
     "scrollmagic": "^2.0.5",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "split-html-to-chars": "^1.0.5"
   },
   "author": "stasglevbov <stasglebov@yahoo.com>",
   "devDependencies": {

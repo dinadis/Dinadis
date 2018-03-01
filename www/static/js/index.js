@@ -17044,11 +17044,12 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
 var _helpers = __webpack_require__(0);
 
 _helpers.$document.ready(function () {
-  var $header = $('header');
-  var scrollTop = _helpers.$window.scrollTop();
+  var HEADER = $('header'); // get header
+  var scrollTop = _helpers.$window.scrollTop(); // get window distance to top
   _helpers.$window.on('scroll', function () {
-    scrollTop = _helpers.$window.scrollTop();
-    scrollTop > _helpers.$window.outerHeight() / 2 ? $header.addClass('header-scroll') : $header.removeClass('header-scroll');
+    // add event listener to scroll
+    scrollTop = _helpers.$window.scrollTop(); // update scroll distance
+    scrollTop > _helpers.$window.outerHeight() / 2 ? HEADER.addClass('header-scroll') : HEADER.removeClass('header-scroll'); // add or remove additional class
   });
 });
 
@@ -17078,13 +17079,16 @@ tl.from('.loader__inside', 2, { delay: 1, scale: 0, onComplete: function onCompl
 
 // Show elements on scroll
 var controller = new ScrollMagic.Controller();
+var controllerLetter = new ScrollMagic.Controller();
 $('h3, h4, p, .services-slider, .about img, .filter-img, .btn, .services__item ul, .tabs, .desc-block img').each(function () {
   var currentElem = $(this)[0];
 
   var tweenArticle = new TimelineMax().from(currentElem, 1, { delay: 0.2, y: 50, opacity: 0, ease: Back.easeOut.config(1.5) });
 
-  var scene = new ScrollMagic.Scene({ triggerElement: currentElem, triggerHook: 1 }).setTween(tweenArticle).addTo(controller);
-  var test = function test() {};
+  var scene = new ScrollMagic.Scene({
+    triggerElement: currentElem,
+    triggerHook: 1
+  }).setTween(tweenArticle).addTo(controller);
 });
 
 /***/ }),
@@ -21054,44 +21058,37 @@ var _helpers = __webpack_require__(0);
 
 var _ScrollToPlugin = __webpack_require__(28);
 
-// scroll down main page link
-if ($('.about').length) {
-  var scrollAnchor = $('.about')[0];
-  var posTop = scrollAnchor.offsetTop;
-  var scrollBtn = $('.scroll-down-btn');
-  var header = $('header');
-
-  scrollBtn.on('click', function (e) {
-    e.preventDefault();
-    TweenLite.to(window, 2, {
-      scrollTo: posTop - header.outerHeight(),
-      ease: Power3.easeOut
+var scrollToElem = function scrollToElem(btnClass, elemClass) {
+  if ($('.' + elemClass + '').length) {
+    // does elem exist
+    var $btn = $('.' + btnClass); // get btn
+    var scrollElemOffset = $('.' + elemClass + '')[0].offsetTop; // get scroll distance
+    var headerHeight = $('header').outerHeight(); // get header height
+    // btn on click event
+    $btn.on('click', function (e) {
+      e.preventDefault(); // prevent default
+      // gsap scroll animation
+      TweenLite.to(window, 2, {
+        scrollTo: scrollElemOffset - headerHeight,
+        ease: Power3.easeOut
+      });
     });
-  });
-}
+  }
+};
+scrollToElem('scroll-down-btn', 'about');
+scrollToElem('contact-us-btn', 'contact-form');
 
-if ($('.contact-form').length) {
-  var formTop = $('.contact-form')[0].offsetTop;
-  var contactUs = $('.contact-us-btn');
-
-  contactUs.on('click', function (e) {
-    e.preventDefault();
-    TweenLite.to(window, 2, {
-      scrollTo: formTop,
-      ease: Power3.easeOut
-    });
-  });
-}
-var serviceBtn = $('.services-btn');
-
+// services anchor scroll
+var serviceBtn = $('.services-btn'); // get btn
 serviceBtn.on('click', function (e) {
-
+  // scroll to service function
   var scrollToService = function scrollToService(servicesTop) {
     TweenLite.to(window, 2, {
       scrollTo: servicesTop,
       ease: Power3.easeOut
     });
   };
+
   if (_helpers.currentPage === 'home') {
     e.preventDefault();
     var servicesTop = $('section.services')[0].offsetTop;
@@ -21318,11 +21315,12 @@ var _helpers = __webpack_require__(0);
 _helpers.$document.ready(function () {
   $("[data-fancybox]").fancybox({
     afterShow: function afterShow() {
-      // After modal - play the video
+      // After play modal - play video
       var vid = document.getElementById("video_modal");
       vid.play();
     },
     afterClose: function afterClose() {
+      // After close modal - pause video
       var vid = document.getElementById("video_modal");
       vid.pause();
     }

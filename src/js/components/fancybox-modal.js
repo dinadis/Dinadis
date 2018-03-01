@@ -4,12 +4,13 @@ import { $document } from '../modules/dev/_helpers';
 $document.ready(() => {
   $("[data-fancybox]").fancybox({
     afterShow: function() {
-      // After modal - play the video
-      var vid = document.getElementById("video_modal");
+      // After play modal - play video
+      let vid = document.getElementById("video_modal");
       vid.play();
     },
     afterClose: () => {
-      var vid = document.getElementById("video_modal");
+      // After close modal - pause video
+      let vid = document.getElementById("video_modal");
       vid.pause();
     }
 

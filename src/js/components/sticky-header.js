@@ -4,11 +4,11 @@ import {
 } from '../modules/dev/_helpers';
 
 $doc.ready( () => {
-  const $header = $('header');
-  let scrollTop = $win.scrollTop();
-  $win.on('scroll', () => {
-    scrollTop = $win.scrollTop();
-    scrollTop > $win.outerHeight() / 2 ? $header.addClass('header-scroll') : $header.removeClass('header-scroll');
+  const HEADER = $('header'); // get header
+  let scrollTop = $win.scrollTop(); // get window distance to top
+  $win.on('scroll', () => { // add event listener to scroll
+    scrollTop = $win.scrollTop(); // update scroll distance
+    scrollTop > $win.outerHeight() / 2 ? HEADER.addClass('header-scroll') : HEADER.removeClass('header-scroll'); // add or remove additional class
   })
 
 })

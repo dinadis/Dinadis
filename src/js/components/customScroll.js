@@ -5,5 +5,5 @@ import { $window } from '../modules/dev/_helpers'
   container.mCustomScrollbar({
     scrollInertia: 350,
     autoExpandScrollbar: true,
-    mouseWheel:{ scrollAmount: 270 }
+    mouseWheel: { scrollAmount: 270 }
   });
