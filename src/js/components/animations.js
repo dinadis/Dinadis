@@ -6,7 +6,8 @@ let tl = new TimelineMax();
 
 // First screen animation
 tl
-  .from('.loader__inside', 2, { delay: 1, scale: 0, onComplete: () => {
+  .from('.loader__inside', 1, { delay: 1, x: '-100%', ease: Power4.easeIn})
+  .to('.loader', 1, { x: '100%', ease: Power4.easeOut, onComplete: () => {
     $('.loader').remove();
   }})
   .fromTo('h1', 1, { x: -100, opacity: 0 }, { x: 0, opacity: 1 }, '-=0.7')
@@ -17,7 +18,6 @@ tl
   .staggerFromTo('.nav li', 0.5, { opacity: 0, y: 30 }, { opacity: 1, y: 0 }, 0.03)
   .from('.scroll-down-btn', 1, { y: 100, opacity: 0 }, '-=0.5')
   .staggerFrom('.breadcrumb li', 1, { y: 50, opacity: 0 }, 0.3, '-=0.5');
-
 // Show elements on scroll
 let controller = new ScrollMagic.Controller();
 let controllerLetter = new ScrollMagic.Controller();

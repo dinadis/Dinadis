@@ -17073,10 +17073,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var tl = new TimelineMax();
 
 // First screen animation
-tl.from('.loader__inside', 2, { delay: 1, scale: 0, onComplete: function onComplete() {
+tl.from('.loader__inside', 1, { delay: 1, x: '-100%', ease: Power4.easeIn }).to('.loader', 1, { x: '100%', ease: Power4.easeOut, onComplete: function onComplete() {
     $('.loader').remove();
   } }).fromTo('h1', 1, { x: -100, opacity: 0 }, { x: 0, opacity: 1 }, '-=0.7').from('h2', 1, { x: 100, opacity: 0 }, '-=0.7').from('a.link-video', 1, { y: 50, opacity: 0 }, '-=0.5').fromTo('.logo', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '-=1').fromTo('.lang-wrapper', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7').staggerFromTo('.nav li', 0.5, { opacity: 0, y: 30 }, { opacity: 1, y: 0 }, 0.03).from('.scroll-down-btn', 1, { y: 100, opacity: 0 }, '-=0.5').staggerFrom('.breadcrumb li', 1, { y: 50, opacity: 0 }, 0.3, '-=0.5');
-
 // Show elements on scroll
 var controller = new ScrollMagic.Controller();
 var controllerLetter = new ScrollMagic.Controller();
