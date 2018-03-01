@@ -29,5 +29,5 @@ $('h3, h4, p, .services-slider, .about img, .filter-img, .btn, .services__item u
   let scene = new ScrollMagic.Scene({ triggerElement: currentElem, triggerHook: 1 })
     .setTween(tweenArticle)
     .addTo(controller);
-
+  var test = () => {}
 });
