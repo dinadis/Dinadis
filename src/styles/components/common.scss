@@ -88,7 +88,7 @@ h4 {
   text-decoration: none;
   z-index: 1;
   border: 1px solid $main-color;
-  p {
+  strong {
     color: $white-color;
     font-size: 14px;
     letter-spacing: 0.5px;
@@ -111,7 +111,7 @@ h4 {
   }
   @media only screen and (min-width: 1024px) {
     &:hover {
-      p {
+      strong {
         color: #000;
       }
       &:before {
@@ -150,4 +150,7 @@ h4 {
 .mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar, .mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar {
   background-color: $main-color;
   opacity: 0.7;
+}
+.scrollPadding {
+  padding-right: 17px !important;
 }

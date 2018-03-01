@@ -8,7 +8,7 @@ webpackJsonp([0],[
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.throttle = exports.debounce = exports.randomString = exports.css = exports.Resp = exports.checkClosest = exports.isScrolledIntoView = exports.toggleClass = exports.currentPage = exports.winWidth = exports.$scrolledElements = exports.$footer = exports.$header = exports.$window = exports.$document = exports.$body = undefined;
+exports.headerHeight = exports.throttle = exports.debounce = exports.randomString = exports.css = exports.Resp = exports.checkClosest = exports.isScrolledIntoView = exports.toggleClass = exports.currentPage = exports.winWidth = exports.$scrolledElements = exports.$section = exports.$footer = exports.$header = exports.$window = exports.$document = exports.$body = undefined;
 var _arguments = arguments;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
@@ -73,6 +73,11 @@ var $header = exports.$header = $('header');
  */
 var $footer = exports.$footer = $('footer');
 
+/**
+ *
+ * @type {*|jQuery|HTMLElement}
+ */
+var $section = exports.$section = $('section');
 /**
  * Elements for cross-browser window scroll.
  *
@@ -308,6 +313,13 @@ var throttle = exports.throttle = function throttle(fn) {
       fn.apply(context, args);
     }
   };
+};
+/**
+ * Get header height
+ * @returns {*}
+ */
+var headerHeight = exports.headerHeight = function headerHeight() {
+  return $header.outerHeight();
 };
 
 /***/ }),
@@ -13287,13 +13299,17 @@ __webpack_require__(16);
 
 __webpack_require__(17);
 
-__webpack_require__(20);
+var _popup = __webpack_require__(20);
+
+var _popup2 = _interopRequireDefault(_popup);
 
 __webpack_require__(22);
 
 __webpack_require__(25);
 
-__webpack_require__(27);
+var _scrollDown = __webpack_require__(27);
+
+var _scrollDown2 = _interopRequireDefault(_scrollDown);
 
 __webpack_require__(29);
 
@@ -13304,6 +13320,29 @@ var _Home2 = _interopRequireDefault(_Home);
 var _helpers = __webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Run appropriate scripts for each page.
+ **/
+
+/** Import page controllers */
+switch (_helpers.currentPage) {
+  /** Home page */
+  case 'home':
+    _scrollDown2.default.initScroll($('.scroll-down-btn'), 'about');
+    _scrollDown2.default.initScroll($('.contact-us-btn'), 'contact-form');
+    _scrollDown2.default.initScroll($('.services-btn'), 'services');
+    break;
+  case 'sub':
+    _scrollDown2.default.initScroll($('.scroll-down-btn'), 'about');
+    _scrollDown2.default.initScroll($('.contact-us-btn'), 'contact-form');
+    _scrollDown2.default.initScrollService($('.services-btn'), 'services');
+    new _popup2.default();
+    break;
+  /** No page found */
+  default:
+    console.warn('Undefined page');
+}
 
 /***/ }),
 /* 8 */
@@ -18433,49 +18472,91 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _helpers = __webpack_require__(0);
 
-_helpers.$document.ready(function () {
-  var scrollbarWidth = __webpack_require__(21)();
-  var popupBody = $('.popup-body');
-  var popUpBg = $('.popup-bg');
-  var popUp = $('.popup');
-  var tl = new TimelineLite();
-  var closeBtn = $('.closeBtn');
-  var btn = $('.filter-content__item');
+var _scrollbarWidth = __webpack_require__(21);
 
-  // initialize gsap animation
-  tl.from(popUpBg, 0.5, { opacity: 0, zIndex: -1 }) // show popup background
-  .from(popupBody, 0.5, { x: '-100%', zIndex: -1, ease: Power2.easeOut }); // show popup body
-  // pause gsap
-  tl.pause();
-  // click on tour item
-  btn.on('click', function (e) {
-    $('.popup').addClass('active-popup');
-    // lock body scroll
-    _helpers.$body.addClass('lock');
-    $('section, header, footer').css({ 'padding-right': scrollbarWidth + 'px' });
-    e.preventDefault();
-    // play gsap animation
-    tl.play();
-  });
-  // close popup function
-  function closePopup() {
-    // reverse play gsap animation
-    tl.reverse();
-    setTimeout(function () {
-      $('.popup').removeClass('active-popup');
-      _helpers.$body.removeClass('lock');
-      $('section, header, footer').css({ 'padding-right': 0 });
-    }, 1000);
+var _scrollbarWidth2 = _interopRequireDefault(_scrollbarWidth);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Popup = function () {
+  function Popup() {
+    _classCallCheck(this, Popup);
+
+    this.scrollbarWidth = (0, _scrollbarWidth2.default)();
+    this.popupBody = $('.popup-body');
+    this.popUpBg = '.popup-bg';
+    this.popUp = $('.popup');
+    this.tl = new TimelineLite();
+    this.tl2 = new TimelineLite();
+    this.closeBtn = '.closeBtn';
+    this.btn = $('.filter-content__item');
+    this.initOpenPopupEvent();
+    this.initClosePopupEvent();
+    this.sections = [_helpers.$header, _helpers.$footer, _helpers.$section];
   }
-  popUpBg.on('click', function () {
-    closePopup();
-  });
-  closeBtn.on('click', function () {
-    closePopup();
-  });
-});
+
+  _createClass(Popup, [{
+    key: 'initOpenPopupEvent',
+    value: function initOpenPopupEvent() {
+      var _this = this;
+
+      this.btn.on('click', function (e) {
+        e.preventDefault();
+        _this.popUp.addClass('active-popup');
+        _helpers.$body.addClass('lock');
+
+        _this.sections.forEach(function (elem) {
+          elem.addClass('scrollPadding');
+        });
+
+        _this.tl.to($(_this.popUpBg), 0.5, { opacity: 1, zIndex: 1 }).to(_this.popupBody, 0.5, { x: '0', ease: Power2.easeOut });
+        _this.tl.play();
+      });
+    }
+  }, {
+    key: 'initClosePopupEvent',
+    value: function initClosePopupEvent() {
+      var _this2 = this;
+
+      _helpers.$document.on('click', '.closePopup', function (e) {
+        _this2.closePopup();
+      });
+    }
+  }, {
+    key: 'closePopup',
+    value: function closePopup() {
+      var _this3 = this;
+
+      this.tl2.to(this.popupBody, 0.5, { x: -1000, ease: Power2.easeIn }).to($(this.popUpBg), 0.5, { opacity: 0, zIndex: -1, onComplete: function onComplete() {
+          _this3.clearCssData();
+        } });
+      this.tl2.play();
+    }
+  }, {
+    key: 'clearCssData',
+    value: function clearCssData() {
+      this.popUp.removeClass('active-popup');
+      _helpers.$body.removeClass('lock');
+      this.sections.forEach(function (elem) {
+        elem.removeClass('scrollPadding');
+      });
+    }
+  }]);
+
+  return Popup;
+}();
+
+exports.default = Popup;
 
 /***/ }),
 /* 21 */
@@ -21053,60 +21134,94 @@ $('.parallax').jarallax({
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _helpers = __webpack_require__(0);
 
 var _ScrollToPlugin = __webpack_require__(28);
 
-var scrollToElem = function scrollToElem(btnClass, elemClass) {
-  if ($('.' + elemClass + '').length) {
-    // does elem exist
-    var $btn = $('.' + btnClass); // get btn
-    var scrollElemOffset = $('.' + elemClass + '')[0].offsetTop; // get scroll distance
-    var headerHeight = $('header').outerHeight(); // get header height
-    // btn on click event
-    $btn.on('click', function (e) {
-      e.preventDefault(); // prevent default
-      // gsap scroll animation
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ScrollController = function () {
+  function ScrollController() {
+    _classCallCheck(this, ScrollController);
+  }
+
+  _createClass(ScrollController, null, [{
+    key: 'initScroll',
+
+
+    /**
+     * Init scroll events by btn click
+     * @param $btn
+     * @param elemClass
+     */
+    value: function initScroll($btn, elemClass) {
+      var _this = this;
+
+      if (!$('.' + elemClass).length) return;
+
+      var scrollElemOffset = $('.' + elemClass)[0].offsetTop;
+
+      $btn.on('click', function (e) {
+        e.preventDefault();
+        _this.initTweenLite(scrollElemOffset, (0, _helpers.headerHeight)());
+      });
+
+      this.checkScrollHash();
+    }
+
+    /**
+     * Init scroll events without service block
+     * @param $btn
+     * @param elemClass
+     */
+
+  }, {
+    key: 'initScrollService',
+    value: function initScrollService($btn, elemClass) {
+      var _this2 = this;
+
+      $btn.on('click', function (e) {
+        if (!$('.' + elemClass).length) window.location = 'home.html#services';
+        var scrollElemOffset = $('.' + elemClass)[0].offsetTop;
+        e.preventDefault();
+        _this2.initTweenLite(scrollElemOffset, (0, _helpers.headerHeight)());
+      });
+    }
+
+    /**
+     * Init timeline animatiom
+     * @param scrollElemOffset
+     * @param headerHeight
+     */
+
+  }, {
+    key: 'initTweenLite',
+    value: function initTweenLite(scrollElemOffset, headerHeight) {
       TweenLite.to(window, 2, {
         scrollTo: scrollElemOffset - headerHeight,
         ease: Power3.easeOut
       });
-    });
-  }
-};
-scrollToElem('scroll-down-btn', 'about');
-scrollToElem('contact-us-btn', 'contact-form');
+    }
+  }, {
+    key: 'checkScrollHash',
+    value: function checkScrollHash() {
+      if (!(window.location.hash === '#services' && _helpers.currentPage === 'home' && $('.services').length)) return;
+      setTimeout(function () {
+        $('.services-btn').trigger('click');
+      }, 2000);
+    }
+  }]);
 
-// services anchor scroll
-var serviceBtn = $('.services-btn'); // get btn
-serviceBtn.on('click', function (e) {
-  // scroll to service function
-  var scrollToService = function scrollToService(servicesTop) {
-    TweenLite.to(window, 2, {
-      scrollTo: servicesTop,
-      ease: Power3.easeOut
-    });
-  };
+  return ScrollController;
+}();
 
-  if (_helpers.currentPage === 'home') {
-    e.preventDefault();
-    var servicesTop = $('section.services')[0].offsetTop;
-    scrollToService(servicesTop);
-  } else {
-    window.location = 'home.html#services';
-  }
-});
-if (window.location.hash === '#services' && _helpers.currentPage === 'home') {
-  if ($('.services').length) {
-    var servicesTop = $('section.services')[0].offsetTop;
-    setTimeout(function () {
-      TweenLite.to(window, 3, {
-        scrollTo: servicesTop,
-        ease: Power3.easeInOut
-      });
-    }, 2000);
-  }
-}
+exports.default = ScrollController;
 
 /***/ }),
 /* 28 */

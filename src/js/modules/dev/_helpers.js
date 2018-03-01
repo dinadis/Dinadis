@@ -48,6 +48,11 @@ export const $header = $('header');
 export const $footer = $('footer');
 
 /**
+ *
+ * @type {*|jQuery|HTMLElement}
+ */
+export const $section = $('section');
+/**
  * Elements for cross-browser window scroll.
  *
  * @constant
@@ -242,3 +247,12 @@ export const throttle = (fn, threshold = 250, scope) => {
     }
   };
 };
+/**
+ * Get header height
+ * @returns {*}
+ */
+export const headerHeight = () => {
+  return $header.outerHeight();
+}
+
+

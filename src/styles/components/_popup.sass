@@ -3,7 +3,7 @@
   top: 0
   left: 0
   max-width: 100%
-  z-index: -5
+  z-index: 999
   display: none
   .popup-bg
     position: absolute
@@ -12,12 +12,15 @@
     width: 100vw
     height: 100vh
     z-index: -1
+    opacity: 0
     +over-mask(0.8, 0)
   .popup-body
     position: relative
+    transform: translateX(-100%)
     //overflow: auto
     max-width: 940px
     height: 100vh
+    z-index: 1
     .desc-block_2
       padding-top: 80px
       h4
