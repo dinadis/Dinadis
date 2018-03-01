@@ -8,9 +8,9 @@
 
 /** Import initialized-by-default modules/libs */
 import './components/PublicAPI'
+import './components/animations'
 import './components/slider'
 import './components/sticky-header'
-import './components/animations'
 import './components/popup'
 import './components/customScroll'
 import './components/parallax'

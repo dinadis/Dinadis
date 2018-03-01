@@ -7,17 +7,17 @@ import getScrollbarWidth from 'scrollbar-width'
 
 export default class Popup {
   constructor () {
-    this.scrollbarWidth = getScrollbarWidth()
-    this.popupBody = $('.popup-body')
-    this.popUpBg = '.popup-bg'
-    this.popUp = $('.popup')
-    this.tl = new TimelineLite()
-    this.tl2 = new TimelineLite()
-    this.closeBtn = '.closeBtn'
-    this.btn = $('.filter-content__item')
-    this.initOpenPopupEvent()
-    this.initClosePopupEvent()
-    this.sections = [$header, $footer, $section]
+    this.scrollbarWidth = getScrollbarWidth();
+    this.popupBody = $('.popup-body');
+    this.popUpBg = '.popup-bg';
+    this.popUp = $('.popup');
+    this.tl = new TimelineLite();
+    this.tl2 = new TimelineLite();
+    this.closeBtn = '.closeBtn';
+    this.btn = $('.filter-content__item');
+    this.initOpenPopupEvent();
+    this.initClosePopupEvent();
+    this.sections = [$header, $footer, $section];
   }
 
   initOpenPopupEvent () {

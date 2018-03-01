@@ -13293,11 +13293,11 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 __webpack_require__(8);
 
+__webpack_require__(17);
+
 __webpack_require__(10);
 
 __webpack_require__(16);
-
-__webpack_require__(17);
 
 var _popup = __webpack_require__(20);
 
@@ -17083,12 +17083,19 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
 var _helpers = __webpack_require__(0);
 
 _helpers.$document.ready(function () {
-  var HEADER = $('header'); // get header
-  var scrollTop = _helpers.$window.scrollTop(); // get window distance to top
+  var HEADER = $('header');
+  var scrollTop = _helpers.$window.scrollTop();
   _helpers.$window.on('scroll', function () {
-    // add event listener to scroll
-    scrollTop = _helpers.$window.scrollTop(); // update scroll distance
+    var currentOffsetFromGallery = $('.gallery').offset().top - _helpers.$window.scrollTop();
+    var delta = _helpers.$window.outerHeight() * 0.3;
+    scrollTop = _helpers.$window.scrollTop();
     scrollTop > _helpers.$window.outerHeight() / 2 ? HEADER.addClass('header-scroll') : HEADER.removeClass('header-scroll'); // add or remove additional class
+    if (Math.abs(currentOffsetFromGallery) < delta) {
+      TweenLite.to(window, 0.5, {
+        scrollTo: $('.gallery').offset().top,
+        ease: Power1.easeOut
+      });
+    }
   });
 });
 
@@ -17112,9 +17119,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var tl = new TimelineMax();
 
 // First screen animation
-tl.from('.loader__inside', 1, { delay: 1, x: '-100%', ease: Power4.easeIn }).to('.loader', 1, { x: '100%', ease: Power4.easeOut, onComplete: function onComplete() {
+tl.from('.loader__inside', 1, { delay: 1, x: '-100%', ease: Power4.easeOut }).staggerTo('.loader', 1, { x: '100%', ease: Power4.easeOut, onComplete: function onComplete() {
     $('.loader').remove();
-  } }).fromTo('h1', 1, { x: -100, opacity: 0 }, { x: 0, opacity: 1 }, '-=0.7').from('h2', 1, { x: 100, opacity: 0 }, '-=0.7').from('a.link-video', 1, { y: 50, opacity: 0 }, '-=0.5').fromTo('.logo', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '-=1').fromTo('.lang-wrapper', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7').staggerFromTo('.nav li', 0.5, { opacity: 0, y: 30 }, { opacity: 1, y: 0 }, 0.03).from('.scroll-down-btn', 1, { y: 100, opacity: 0 }, '-=0.5').staggerFrom('.breadcrumb li', 1, { y: 50, opacity: 0 }, 0.3, '-=0.5');
+  } }, 2).fromTo('h1', 1, { x: -100, opacity: 0 }, { x: 0, opacity: 1 }, '-=0.7').from('h2', 1, { x: 100, opacity: 0 }, '-=0.7').from('a.link-video', 1, { y: 50, opacity: 0 }, '-=0.5').fromTo('.logo', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '-=1').fromTo('.lang-wrapper', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7').staggerFromTo('.nav li', 0.5, { opacity: 0, y: 30 }, { opacity: 1, y: 0 }, 0.03).from('.scroll-down-btn', 1, { y: 100, opacity: 0 }, '-=0.5').staggerFrom('.breadcrumb li', 1, { y: 50, opacity: 0 }, 0.3, '-=0.5');
 // Show elements on scroll
 var controller = new ScrollMagic.Controller();
 var controllerLetter = new ScrollMagic.Controller();
