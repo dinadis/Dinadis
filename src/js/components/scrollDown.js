@@ -3,7 +3,6 @@ import {
   headerHeight
 } from '../modules/dev/_helpers'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
-
 export default class ScrollController {
 
   /**
@@ -12,11 +11,13 @@ export default class ScrollController {
    * @param elemClass
    */
   static initScroll ($btn, elemClass) {
+
     if (!$(`.${elemClass}`).length) return
 
     let scrollElemOffset = $(`.${elemClass}`)[0].offsetTop;
 
     $btn.on('click', (e) => {
+      window.checker = 0;
       e.preventDefault();
       this.initTweenLite(scrollElemOffset, headerHeight());
     });
@@ -31,6 +32,7 @@ export default class ScrollController {
    */
   static initScrollService ($btn, elemClass) {
     $btn.on('click', (e) => {
+      checker = 0;
       if (!$(`.${elemClass}`).length) window.location = 'home.html#services';
       let scrollElemOffset = $(`.${elemClass}`)[0].offsetTop;
       e.preventDefault();
