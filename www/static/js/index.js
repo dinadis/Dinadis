@@ -13313,7 +13313,9 @@ var _scrollDown2 = _interopRequireDefault(_scrollDown);
 
 __webpack_require__(29);
 
-var _Home = __webpack_require__(31);
+__webpack_require__(31);
+
+var _Home = __webpack_require__(32);
 
 var _Home2 = _interopRequireDefault(_Home);
 
@@ -13507,8 +13509,10 @@ tl.from('.loader__inside', 1, { delay: 1, x: '-100%', ease: Power4.easeOut }).st
     $('.loader').remove();
   } }, 2).fromTo('h1', 1, { x: -100, opacity: 0 }, { x: 0, opacity: 1 }, '-=0.7').from('h2', 1, { x: 100, opacity: 0 }, '-=0.7').from('a.link-video', 1, { y: 50, opacity: 0 }, '-=0.5').fromTo('.logo', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '-=1').fromTo('.lang-wrapper', 1, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, '-=0.7').staggerFromTo('.nav li', 0.5, { opacity: 0, y: 30 }, { opacity: 1, y: 0 }, 0.03).from('.scroll-down-btn', 1, { y: 100, opacity: 0 }, '-=0.5').staggerFrom('.breadcrumb li', 1, { y: 50, opacity: 0 }, 0.3, '-=0.5');
 // Show elements on scroll
+
 var controller = new ScrollMagic.Controller();
 var controllerLetter = new ScrollMagic.Controller();
+
 $('h3, h4, p, .services-slider, .about img, .filter-img, .btn, .services__item ul, .tabs, .desc-block img').each(function () {
   var currentElem = $(this)[0];
 
@@ -18460,11 +18464,13 @@ _helpers.$document.ready(function () {
   var HEADER = $('header');
   var scrollTop = _helpers.$window.scrollTop();
   _helpers.$window.on('scroll', function () {
-    var currentOffsetFromGallery = $('.gallery').offset().top - _helpers.$window.scrollTop();
     var delta = _helpers.$window.outerHeight() * 0.3;
     scrollTop = _helpers.$window.scrollTop();
     scrollTop > _helpers.$window.outerHeight() / 2 ? HEADER.addClass('header-scroll') : HEADER.removeClass('header-scroll'); // add or remove additional class
-    if (Math.abs(currentOffsetFromGallery) < delta && checker === 1) {
+    if ($('.gallery').length) {
+      var currentOffsetFromGallery = $('.gallery').offset().top - _helpers.$window.scrollTop();
+    }
+    if ($('.gallery').length && Math.abs(currentOffsetFromGallery) < delta && checker === 1) {
       TweenLite.to(window, 0.5, {
         scrollTo: $('.gallery').offset().top,
         ease: Power1.easeOut
@@ -21182,6 +21188,8 @@ var ScrollController = function () {
         window.checker = 0;
         e.preventDefault();
         _this.initTweenLite(scrollElemOffset, (0, _helpers.headerHeight)());
+        $('.burger').removeClass('active-menu');
+        $('.nav').removeClass('active-nav');
       });
 
       this.checkScrollHash();
@@ -21199,11 +21207,13 @@ var ScrollController = function () {
       var _this2 = this;
 
       $btn.on('click', function (e) {
-        checker = 0;
+        window.checker = 0;
         if (!$('.' + elemClass).length) window.location = 'home.html#services';
         var scrollElemOffset = $('.' + elemClass)[0].offsetTop;
         e.preventDefault();
         _this2.initTweenLite(scrollElemOffset, (0, _helpers.headerHeight)());
+        $('.burger').removeClass('active-menu');
+        $('.nav').removeClass('active-nav');
       });
     }
 
@@ -26615,6 +26625,18 @@ _helpers.$document.ready(function () {
 
 /***/ }),
 /* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+$('.burger').on('click', function () {
+  $(this).toggleClass('active-menu');
+  $('.nav').toggleClass('active-nav');
+});
+
+/***/ }),
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

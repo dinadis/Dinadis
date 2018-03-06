@@ -12,7 +12,7 @@ export default class ScrollController {
    */
   static initScroll ($btn, elemClass) {
 
-    if (!$(`.${elemClass}`).length) return
+    if (!$(`.${elemClass}`).length) return;
 
     let scrollElemOffset = $(`.${elemClass}`)[0].offsetTop;
 
@@ -20,6 +20,8 @@ export default class ScrollController {
       window.checker = 0;
       e.preventDefault();
       this.initTweenLite(scrollElemOffset, headerHeight());
+      $('.burger').removeClass('active-menu');
+      $('.nav').removeClass('active-nav');
     });
 
     this.checkScrollHash();
@@ -32,11 +34,13 @@ export default class ScrollController {
    */
   static initScrollService ($btn, elemClass) {
     $btn.on('click', (e) => {
-      checker = 0;
+      window.checker = 0;
       if (!$(`.${elemClass}`).length) window.location = 'home.html#services';
       let scrollElemOffset = $(`.${elemClass}`)[0].offsetTop;
       e.preventDefault();
       this.initTweenLite(scrollElemOffset, headerHeight());
+      $('.burger').removeClass('active-menu');
+      $('.nav').removeClass('active-nav');
     });
   }
 

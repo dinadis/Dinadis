@@ -1,17 +1,36 @@
 .about
   min-height: 300px
   padding-bottom: 80px
+  overflow: hidden
   h3
     text-align: center
     padding: 75px 0 65px 0
+    +res('mob')
+      padding: 35px 0
   .wrapper
     +flex(row, space-between, flex-start)
+    +res('tab')
+      flex-direction: column-reverse
+      width: 100%
+    +res('mob')
+      flex-direction: column-reverse
+      width: 100%
     .left-wrapper
       width: 50%
+      +res('tab')
+        width: 100%
+      +res('mob')
+        width: 100%
       h4
         max-width: 250px
         +res('desk')
           padding-top: 55px
+        +res('tab')
+          max-width: 100%
+          padding-top: 25px !important
+        +res('mob')
+          max-width: 100%
+          padding-top: 25px !important
         &:before
           content: ''
           width: 40px
@@ -34,10 +53,22 @@
           padding-top: 50px
           &:nth-of-type(n + 2)
             padding-top: 20px
+        +res('tab')
+          max-width: 100%
+        +res('mob')
+          max-width: 100%
     .right-wrapper
       width: 50%
+      +res('tab')
+        width: 100%
+      +res('mob')
+        width: 100%
       img
         max-width: 100%
+        +res('tab')
+          width: 100%
+        +res('mob')
+          width: 100%
 .about-chess-wrapper
   padding-top: 80px
   .box-overlay
@@ -50,8 +81,14 @@
         .left-wrapper
           padding-left: 20px
           padding-right: 0
+          +res('mob')
+            padding-left: 0
+        +res('mob')
+          flex-direction: column-reverse
     .wrapper
       .left-wrapper
         padding-right: 20px
         p
           max-width: 100%
+        +res('mob')
+          padding-right: 0

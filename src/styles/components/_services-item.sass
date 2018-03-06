@@ -2,13 +2,29 @@
   display: flex
   overflow: hidden
   position: relative
+  +res('tab')
+    flex-direction: column
+  +res('mob')
+    flex-direction: column
   .left-wrapper, .right-wrapper
     width: 50%
     height: 100%
+    +res('tab')
+      width: 100%
+    +res('mob')
+      width: 100%
   .left-wrapper
     +flex(column, center, center)
     padding-top: 85px
     padding-right: 35px
+    +res('tab')
+      padding-top: 40px
+      padding-right: 0
+      padding-bottom: 40px
+    +res('mob')
+      padding-top: 20px
+      padding-right: 0
+      padding-bottom: 20px
     h3
       max-width: 250px
       text-align: center
@@ -41,6 +57,11 @@
     overflow: hidden
     position: relative
     max-height: 500px
+    +res('tab')
+      padding-bottom: 60px
+    +res('mob')
+      padding-bottom: 60px
+      max-height: 600px
     .slick-slide
       overflow: hidden
       display: inline-block
@@ -64,6 +85,8 @@
       text-align: center
       +flex(row, flex-start, center)
       z-index: 5
+      +res('mob')
+        bottom: 80px
     .slick-dot
       width: 5px
       padding: 0

@@ -18,6 +18,7 @@ import './components/scrollDown'
 import './components/fancybox-modal'
 import  ScrollController  from './components/scrollDown'
 import Popup from './components/popup'
+import './components/burger'
 /** Import page controllers */
 import Home from './pages/Home'
 

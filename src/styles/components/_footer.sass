@@ -3,6 +3,9 @@ footer
   background-color: $dark
   .container
     +flex(row, space-between, center)
+    +res('mob')
+      flex-direction: column
+      padding-bottom: 30px
     a
       color: $white-color
       font-family: $text
@@ -20,12 +23,18 @@ footer
       letter-spacing: 0.5px
       font-family: $text
       line-height: 90px
+      +res('mob')
+        line-height: 30px
     .right
       display: flex
+      +res('mob')
+        padding-top: 15px
       a
         transition: .3s
       a:last-child
         margin-left: 35px
+        +res('mob')
+          margin: 0 25px
 .white-footer
   background-color: $milk
   .container

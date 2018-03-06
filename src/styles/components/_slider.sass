@@ -27,12 +27,24 @@
     &:first-child
       .slick-dot
         line-height: 50px
+  +res('tab')
+    right: 15px
+  +res('mob')
+    right: 15px
 .arrow-container
   width: 100%
   left: 0
   position: absolute
   bottom: 40px
   +flex(row, flex-start, flex-start)
+  +res('tab')
+    bottom: auto
+    top: 90vh
+    left: 15px
+  +res('mob')
+    bottom: auto
+    top: 90vh
+    left: 15px
   a
     width: 15px
     position: relative

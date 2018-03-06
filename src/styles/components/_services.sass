@@ -1,9 +1,25 @@
 .services
   padding-top: 80px
   padding-bottom: 80px
+  +res('mob')
+    padding-top: 0
+    padding-bottom: 0
   .services__item
     &:nth-child(even)
       flex-direction: row-reverse
       .left-wrapper
         padding-right: 0
         padding-left: 35px
+        +res('tab')
+          padding-top: 40px
+          padding-bottom: 40px
+        +res('mob')
+          padding: 0
+          padding-top: 0
+          padding-bottom: 40px
+      +res('tab')
+        flex-direction: column
+        width: 100%
+      +res('mob')
+        flex-direction: column
+        width: 100%

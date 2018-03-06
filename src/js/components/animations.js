@@ -19,8 +19,10 @@ tl
   .from('.scroll-down-btn', 1, { y: 100, opacity: 0 }, '-=0.5')
   .staggerFrom('.breadcrumb li', 1, { y: 50, opacity: 0 }, 0.3, '-=0.5');
 // Show elements on scroll
+
 let controller = new ScrollMagic.Controller();
 let controllerLetter = new ScrollMagic.Controller();
+
 $('h3, h4, p, .services-slider, .about img, .filter-img, .btn, .services__item ul, .tabs, .desc-block img').each(function(){
   let currentElem = $(this)[0];
 

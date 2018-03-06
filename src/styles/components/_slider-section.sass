@@ -9,12 +9,23 @@
   .container
     height: 100%
     +flex(row, space-between, center)
+    +res('tab')
+      flex-direction: column
+    +res('mob')
+      flex-direction: column
   .left-wrapper
     min-height: 100vh
     padding-top: 250px
     width: 50%
     +res('desk')
       padding-top: 200px
+    +res('tab')
+      min-height: 0
+      width: 100%
+    +res('mob')
+      min-height: 0
+      width: 100%
+      padding-top: 180px
     +flex(column, space-between, flex-start)
     h1
       max-width: 445px
@@ -27,10 +38,16 @@
         height: 2px
         width: 40px
         background-color: $main-color
+      +res('mob')
+        max-width: 100%
     h2
       min-height: 100%
       padding-top: 53px
       max-width: 355px
+      +res('tab')
+        max-width: 100%
+      +res('mob')
+        max-width: 100%
     a
       //padding-bottom: 40px
       text-decoration: none
@@ -46,6 +63,16 @@
         line-height: 15px
         letter-spacing: 0.5px
       +flex(row, flex-start, center)
+      +res('tab')
+        position: absolute
+        top: 95vh
+        bottom: auto
+        left: calc(50% - 35px)
+      +res('mob')
+        position: absolute
+        top: 95vh
+        bottom: auto
+        left: calc(50% - 35px)
     .icon-arrow-down
       animation: scrollDown 2s ease
       animation-iteration-count: infinite
@@ -59,3 +86,15 @@
       justify-content: flex-start
       padding-top: 325px
       padding-bottom: 0
+    +res('tam')
+      padding-top: 100px
+    +res('tab')
+      min-height: 0
+      width: 100%
+      padding-top: 50px
+      padding-left: 0
+    +res('mob')
+      min-height: 0
+      width: 100%
+      padding-top: 50px
+      padding-left: 0
