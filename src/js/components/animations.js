@@ -13,11 +13,14 @@ let tl = new TimelineMax();
 $document.ready( () => {
   let windowHeight = $window.innerHeight();
   $('.slider-section').css( {'min-height': `${windowHeight}px`} );
-  if ( !$('.full-video').length ) return;
-  let vid = $('.full-video')[0];
-  vid.oncanplay = function() {
+  if ( !$('.full-video').length ) {
     runAnimation();
-  };
+  } else {
+    let vid = $('.full-video')[0];
+    vid.oncanplay = function() {
+      runAnimation();
+    };
+  }
 } )
 
 var runAnimation = () => {

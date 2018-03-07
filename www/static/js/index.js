@@ -13511,11 +13511,14 @@ var tl = new TimelineMax();
 _helpers.$document.ready(function () {
   var windowHeight = _helpers.$window.innerHeight();
   $('.slider-section').css({ 'min-height': windowHeight + 'px' });
-  if (!$('.full-video').length) return;
-  var vid = $('.full-video')[0];
-  vid.oncanplay = function () {
+  if (!$('.full-video').length) {
     runAnimation();
-  };
+  } else {
+    var vid = $('.full-video')[0];
+    vid.oncanplay = function () {
+      runAnimation();
+    };
+  }
 });
 
 var runAnimation = function runAnimation() {
