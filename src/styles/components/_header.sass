@@ -15,13 +15,14 @@
   display: none
   +res('mob')
     +flex(column, center, center)
-    width: 30px
+    width: 75px
+    padding-left: 45px
     height: 40px
     position: relative
     padding-top: 5px
     i
       display: block
-      width: 100%
+      width: 30px
       height: 2px
       background-color: $white-color
       margin-bottom: 3px
@@ -29,7 +30,7 @@
       &:nth-child(2)
         position: absolute
         top: 20px
-        left: 0
+        right: 0
   &.active-menu
     i
       &:nth-child(1)
@@ -54,8 +55,9 @@
   svg
     width: 150px
     height: 100%
-    +res('mob')
-      width: 95px
+    max-width: 100%
+  +res('mob')
+    width: 75px
 .flex-wrapper
   +flex(row, space-between, center)
   width: 100%
