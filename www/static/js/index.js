@@ -13315,7 +13315,9 @@ __webpack_require__(29);
 
 __webpack_require__(31);
 
-var _Home = __webpack_require__(32);
+__webpack_require__(32);
+
+var _Home = __webpack_require__(33);
 
 var _Home2 = _interopRequireDefault(_Home);
 
@@ -13507,18 +13509,13 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var tl = new TimelineMax();
 
 // First screen animation
-
+if (_helpers.$window.width() < 768) {
+  $('.full-video').remove();
+}
 _helpers.$document.ready(function () {
   var windowHeight = _helpers.$window.innerHeight();
   $('.slider-section').css({ 'min-height': windowHeight + 'px' });
-  if (!$('.full-video').length) {
-    runAnimation();
-  } else {
-    var vid = $('.full-video')[0];
-    vid.oncanplay = function () {
-      runAnimation();
-    };
-  }
+  runAnimation();
 });
 
 var runAnimation = function runAnimation() {
@@ -26658,6 +26655,19 @@ $('.burger').on('click', function () {
 
 /***/ }),
 /* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+$("form :input").focus(function () {
+  $("label[for='" + this.id + "']").addClass("labelfocus");
+}).blur(function () {
+  if (!$(this).val().length) $("label[for='" + this.id + "']").removeClass("labelfocus");
+});
+
+/***/ }),
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

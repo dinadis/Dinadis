@@ -5,6 +5,68 @@
     color: $white-color
     text-align: center
     padding-top: 80px
+  div.wpcf7
+    width: 490px
+    margin: 0 auto
+    max-width: 100%
+    padding-top: 80px
+    color: $white-color
+    padding-left: 15px
+    p
+      position: relative
+  .wpcf7-text, textarea
+    width: 100%
+    border: none
+    background-color: transparent
+    border-bottom: 1px solid $white-color
+    height: 60px
+    color: $white-color
+    margin-top: 15px
+    padding-left: 15px
+  textarea
+    height: 115px
+  .wpcf7-text
+    //border-bottom: 1px solid $white-color
+    height: 30px
+    bottom: 30px
+    left: 0
+  label
+    position: absolute
+    top: 25px
+    left: 20px
+    font-family: $text
+    font-size: 14px
+    line-height: 25px
+    letter-spacing: 0.25px
+    color: #b6b6b6
+    transition: .3s
+  .labelfocus
+    top: 10px
+    left: 0
+  input[type="submit"]
+    width: 100%
+    height: 50px
+    margin-top: 40px
+    background-color: $main-color
+    display: flex
+    justify-content: center
+    align-items: center
+    text-transform: uppercase
+    position: relative
+    text-decoration: none
+    z-index: 1
+    color: $white-color
+    font-family: $title
+    border: 1px solid $main-color
+    transition: .3s
+    @media only screen and (min-width: 1024px)
+      &:hover
+        color: #000
+        background-color: $white-color
+      &:before
+        transform: scaleX(1)
+  div.wpcf7-response-output
+    margin-bottom: 0
 .white-form
   background-color: $milk
   h3
@@ -13,27 +75,4 @@
     color: $dark
     text-align: center
     padding-top: 20px
-div.wpcf7
-  width: 490px
-  margin: 0 auto
-  max-width: 100%
-  padding-top: 80px
-  p
-    position: relative
-    height: 60px
-    &:before
-      content: ''
-      position: absolute
-      bottom: 30px
-      height: 1px
-      width: 100%
-      background-color: $white-color
-.wpcf7-text, textarea
-  width: 100%
-  border: none
-  background-color: transparent
-.wpcf7-text
-  //border-bottom: 1px solid $white-color
-  height: 30px
-  bottom: 30px
-  left: 0
+

@@ -9,18 +9,13 @@ import {
 let tl = new TimelineMax();
 
 // First screen animation
-
+if ( $window.width() < 768 ) {
+  $('.full-video').remove();
+}
 $document.ready( () => {
   let windowHeight = $window.innerHeight();
   $('.slider-section').css( {'min-height': `${windowHeight}px`} );
-  if ( !$('.full-video').length ) {
-    runAnimation();
-  } else {
-    let vid = $('.full-video')[0];
-    vid.oncanplay = function() {
-      runAnimation();
-    };
-  }
+  runAnimation();
 } )
 
 var runAnimation = () => {
