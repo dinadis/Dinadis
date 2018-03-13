@@ -1,4 +1,4 @@
-mixin filter-block_1($type)
+mixin filter-block_1($type, $subClassItem)
     section.filter-block_1
         .container
             ul.tabs
@@ -13,11 +13,11 @@ mixin filter-block_1($type)
                 li
                     a(href='#') dnepr
             .filter-content__items(class= $type)
-                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)')
-                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)')
-                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)')
-                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)')
-                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)')
-                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)')
+                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)', $subclassItem)
+                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)', $subclassItem)
+                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)', $subclassItem)
+                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)', $subclassItem)
+                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)', $subclassItem)
+                +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)', $subclassItem)
             .btn-wrapper
                 +btn('#', 'show more tours', '')

@@ -162,5 +162,7 @@ h4 {
   opacity: 0.7;
 }
 .scrollPadding {
+  +res('desk-min') {
   padding-right: 17px !important;
+}
 }

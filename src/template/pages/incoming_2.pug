@@ -7,6 +7,26 @@ block main
         +loader
         +incoming-section('', 'tours in ukraine', 'Explore Ukraine, because it is amazing and unique!')
         +desc-block('', 'center', 0, 0)
-        +filter-block_1('filter-block_2')
+        //+filter-block_1('filter-block_2', 'popUpCategory')
+        section.filter-block_1.filter-block_2
+            .container
+                ul.tabs
+                    li.active
+                        span all cities
+                    li
+                        a(href='#') kyiv
+                    li
+                        a(href='#') lviv
+                    li
+                        a(href='#') odesa
+                    li
+                        a(href='#') dnepr
+                .filter-content__items(class= $type)
+                    +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)', 'popUpCategory')
+                    +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)', 'popUpCategory')
+                    +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)', 'popUpCategory')
+                    +filter-items('static/img/filter-img-1.jpg', 'tour in Kyiv - Lviv - Odesa with a great trip', 'February 11 (6 days)', 'popUpCategory')
+                .btn-wrapper
+                    +btn('#', 'show more tours', '')
         +contact-form('', 'contact us', 0)
         +popup

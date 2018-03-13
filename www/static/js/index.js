@@ -18534,7 +18534,7 @@ var Popup = function () {
     this.tl = new TimelineLite();
     this.tl2 = new TimelineLite();
     this.closeBtn = '.closeBtn';
-    this.btn = $('.filter-content__item');
+    this.btn = $('.popUpCategory');
     this.initOpenPopupEvent();
     this.initClosePopupEvent();
     this.sections = [_helpers.$header, _helpers.$footer, _helpers.$section];

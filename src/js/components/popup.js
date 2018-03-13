@@ -1,6 +1,6 @@
 import {
   $body,
-  $header, $footer, $section, $document
+  $header, $footer, $section, $document, currentPage
 } from '../modules/dev/_helpers'
 
 import getScrollbarWidth from 'scrollbar-width'
@@ -14,7 +14,7 @@ export default class Popup {
     this.tl = new TimelineLite();
     this.tl2 = new TimelineLite();
     this.closeBtn = '.closeBtn';
-    this.btn = $('.filter-content__item');
+    this.btn = $('.popUpCategory');
     this.initOpenPopupEvent();
     this.initClosePopupEvent();
     this.sections = [$header, $footer, $section];
@@ -39,9 +39,8 @@ export default class Popup {
 
   initClosePopupEvent () {
     $document.on('click', '.closePopup', (e) => {
-      this.closePopup()
-    })
-
+      this.closePopup();
+    });
   }
 
   closePopup () {

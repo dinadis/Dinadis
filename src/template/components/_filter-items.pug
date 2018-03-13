@@ -1,5 +1,5 @@
-mixin filter-items($img, $title, $p)
-    a(href='').filter-content__item
+mixin filter-items($img, $title, $p, $subClass)
+    a(href='').filter-content__item(class= $subClass)
         .filter-img
             img(src= $img)
         .filter-title
