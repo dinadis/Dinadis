@@ -35,7 +35,7 @@ export default class ScrollController {
   static initScrollService ($btn, elemClass) {
     $btn.on('click', (e) => {
       window.checker = 0;
-      if (!$(`.${elemClass}`).length) window.location = 'home.html#services';
+      if (!$(`.${elemClass}`).length) window.location = 'http://incoming.dinadis.ua#services';
       let scrollElemOffset = $(`.${elemClass}`)[0].offsetTop;
       e.preventDefault();
       this.initTweenLite(scrollElemOffset, headerHeight());

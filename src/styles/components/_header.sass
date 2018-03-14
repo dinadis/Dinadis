@@ -7,7 +7,7 @@
   z-index: 99
   box-sizing: border-box
   width: 100%
-  overflow: hidden
+  //overflow: hidden
   +over-mask-header(0.65)
   +res('mob')
     overflow: visible
@@ -77,13 +77,6 @@
     +res('desk-min')
       &:hover
         color: $main-color
-        &:before
-          opacity: 1
-          bottom: -2px
-        &:after
-          opacity: 1
-          bottom: -2px
-          transition-delay: 0.15s
 .nav
   +flex(row, flex-end, center)
   width: 33%
@@ -103,10 +96,12 @@
     //overflow:
   li
     margin-left: 30px
+    position: relative
     &:first-child
       margin-left: 0
     +res('mob')
       margin: 35px 0
+      text-align: center
     a
       text-transform: uppercase
       color: #fff
@@ -114,11 +109,41 @@
       font-size: 14px
       position: relative
       padding: 0 5px
+      display: inline-block
       transition: .3s
+      text-align: center
+      +res('mob')
+        font-size: 16px
+    &:nth-of-type(2)
+      a
+        min-width: 75px
+      &:hover
+        ul
+          transform: scaleY(1) !important
   .active
     a
       color: $main-color
       &:before
         transform: scaleX(1)
+
   &.active-nav
+    transform: scaleY(1)
+.dropdown
+  position: absolute
+  width: 100%
+  left: 0
+  top: 20px
+  transition: .3s
+  transform: scaleY(0)
+  transform-origin: top
+  li
+    margin: 5px 0
+    a
+      text-align: center
+      +res('mob')
+        font-size: 14px
+    +res('mob')
+      margin: 5px 0 !important
+  +res('mob')
+    position: relative
     transform: scaleY(1)

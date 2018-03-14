@@ -21226,7 +21226,7 @@ var ScrollController = function () {
 
       $btn.on('click', function (e) {
         window.checker = 0;
-        if (!$('.' + elemClass).length) window.location = 'home.html#services';
+        if (!$('.' + elemClass).length) window.location = 'http://incoming.dinadis.ua#services';
         var scrollElemOffset = $('.' + elemClass)[0].offsetTop;
         e.preventDefault();
         _this2.initTweenLite(scrollElemOffset, (0, _helpers.headerHeight)());
